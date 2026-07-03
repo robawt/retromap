@@ -1,0 +1,22 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 16 16" width="16" height="16">
+  <defs>
+    <style>
+      .p { shape-rendering: crispEdges; }
+    </style>
+  </defs>
+  <!-- Windows flag - waving quadrants -->
+  <!-- Top-left red quadrant -->
+  <rect class="p" x="1" y="1" width="7" height="7" fill="#E81123"/>
+  <!-- Top-right green quadrant -->
+  <rect class="p" x="8" y="1" width="7" height="7" fill="#00A65B"/>
+  <!-- Bottom-left blue quadrant -->
+  <rect class="p" x="1" y="8" width="7" height="7" fill="#0078D7"/>
+  <!-- Bottom-right yellow quadrant -->
+  <rect class="p" x="8" y="8" width="7" height="7" fill="#FFB900"/>
+  <!-- Subtle highlight overlay -->
+  <rect class="p" x="1" y="1" width="3" height="1" fill="#FFFFFF" opacity="0.3"/>
+  <rect class="p" x="1" y="1" width="1" height="3" fill="#FFFFFF" opacity="0.3"/>
+  <!-- Subtle shadow -->
+  <rect class="p" x="1" y="15" width="14" height="1" fill="#000000" opacity="0.2"/>
+  <rect class="p" x="15" y="1" width="1" height="14" fill="#000000" opacity="0.15"/>
+</svg>

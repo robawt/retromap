@@ -1,0 +1,24 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 32 32" width="32" height="32">
+  <defs>
+    <style>
+      .p { shape-rendering: crispEdges; }
+    </style>
+  </defs>
+  <!-- Speech bubble body -->
+  <rect class="p" x="4" y="4" width="24" height="18" fill="#E8F4FD"/>
+  <rect class="p" x="6" y="6" width="20" height="14" fill="#D0ECFA"/>
+  <!-- Bubble outline -->
+  <rect class="p" x="4" y="4" width="24" height="1" fill="#4A90D9"/>
+  <rect class="p" x="4" y="21" width="24" height="1" fill="#4A90D9"/>
+  <rect class="p" x="4" y="4" width="1" height="18" fill="#4A90D9"/>
+  <rect class="p" x="27" y="4" width="1" height="18" fill="#4A90D9"/>
+  <!-- Tail of speech bubble -->
+  <rect class="p" x="8" y="22" width="2" height="2" fill="#D0ECFA"/>
+  <rect class="p" x="10" y="24" width="2" height="2" fill="#D0ECFA"/>
+  <rect class="p" x="10" y="22" width="1" height="2" fill="#4A90D9"/>
+  <rect class="p" x="8" y="22" width="2" height="1" fill="#4A90D9"/>
+  <!-- Ellipsis dots -->
+  <rect class="p" x="12" y="11" width="2" height="2" fill="#4A90D9"/>
+  <rect class="p" x="15" y="11" width="2" height="2" fill="#4A90D9"/>
+  <rect class="p" x="18" y="11" width="2" height="2" fill="#4A90D9"/>
+</svg>

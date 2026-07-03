@@ -1,0 +1,709 @@
+/* ═══════════════════════════════════════════════════════
+   RetroMap — Component Styles (Windows XP UI Elements)
+   ═══════════════════════════════════════════════════════ */
+
+/* ─── Windows ─── */
+.xp-window {
+  position: absolute;
+  display: flex;
+  flex-direction: column;
+  background: var(--xp-window-bg);
+  box-shadow: var(--xp-shadow-window);
+  min-width: 200px;
+  min-height: 100px;
+  user-select: none;
+}
+
+.xp-window-titlebar {
+  display: flex;
+  align-items: center;
+  height: var(--xp-titlebar-height);
+  background: var(--xp-titlebar-gradient);
+  padding: 0 var(--xp-space-1);
+  flex-shrink: 0;
+  cursor: default;
+}
+
+.xp-window-icon {
+  width: 16px;
+  height: 16px;
+  margin-right: var(--xp-space-2);
+  image-rendering: pixelated;
+  flex-shrink: 0;
+}
+
+.xp-window-title {
+  flex: 1;
+  font-family: var(--xp-font);
+  font-size: var(--xp-font-size-title);
+  font-weight: 700;
+  color: var(--xp-titlebar-text);
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  text-shadow: 1px 1px 0 rgba(0,0,0,0.4);
+}
+
+.xp-window-controls {
+  display: flex;
+  gap: var(--xp-space-1);
+  flex-shrink: 0;
+}
+
+.xp-btn-title {
+  width: 21px;
+  height: 21px;
+  padding: 0;
+  border: none;
+  background: var(--xp-button-face);
+  box-shadow:
+    inset 1px 1px 0 var(--xp-button-highlight),
+    inset -1px -1px 0 var(--xp-button-shadow);
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-family: 'Webdings', 'Segoe UI', Tahoma;
+  font-size: 11px;
+  color: var(--xp-text);
+  line-height: 21px;
+}
+
+.xp-btn-title:hover {
+  filter: brightness(1.05);
+}
+
+.xp-btn-title:active {
+  box-shadow:
+    inset 1px 1px 0 var(--xp-button-dark-shadow),
+    inset -1px -1px 0 var(--xp-button-highlight);
+  padding-top: 1px;
+  padding-left: 1px;
+}
+
+.xp-btn-close {
+  font-family: 'Webdings', 'Segoe UI', Tahoma;
+  font-size: 12px;
+  font-weight: 700;
+}
+
+.xp-btn-close:hover {
+  background: var(--xp-close-btn-hover);
+  color: var(--xp-close-btn-hover-text);
+  filter: none;
+}
+
+.xp-window-menubar {
+  display: flex;
+  align-items: center;
+  height: 20px;
+  padding: 0 var(--xp-space-1);
+  background: var(--xp-window-bg);
+  border-bottom: 1px solid var(--xp-button-shadow);
+  flex-shrink: 0;
+  gap: var(--xp-space-1);
+}
+
+.xp-window-menubar-item {
+  padding: 1px 8px;
+  font-family: var(--xp-font);
+  font-size: var(--xp-font-size);
+  color: var(--xp-text);
+  cursor: pointer;
+  border: none;
+  background: none;
+}
+
+.xp-window-menubar-item:hover {
+  background: var(--xp-highlight);
+  color: var(--xp-highlight-text);
+}
+
+.xp-window-body {
+  flex: 1;
+  min-height: 0;
+  background: var(--xp-window-bg);
+  box-shadow: var(--xp-shadow-sunken);
+  margin: var(--xp-space-1);
+  padding: var(--xp-window-padding);
+  overflow: auto;
+  position: relative;
+}
+
+.xp-window-statusbar {
+  display: flex;
+  align-items: center;
+  height: 20px;
+  padding: 0 var(--xp-space-3);
+  background: var(--xp-window-bg);
+  border-top: 1px solid var(--xp-button-shadow);
+  font-family: var(--xp-font);
+  font-size: var(--xp-font-size);
+  flex-shrink: 0;
+}
+
+/* ─── Standard XP Buttons ─── */
+.xp-button {
+  font-family: var(--xp-font);
+  font-size: var(--xp-font-size);
+  padding: var(--xp-space-1) var(--xp-space-5);
+  min-width: 75px;
+  min-height: 23px;
+  background: var(--xp-button-face);
+  border: none;
+  box-shadow:
+    inset 1px 1px 0 var(--xp-button-highlight),
+    inset -1px -1px 0 var(--xp-button-shadow);
+  cursor: pointer;
+  color: var(--xp-text);
+  user-select: none;
+  text-align: center;
+  white-space: nowrap;
+}
+
+.xp-button:hover {
+  filter: brightness(1.05);
+}
+
+.xp-button:active {
+  box-shadow:
+    inset 1px 1px 0 var(--xp-button-dark-shadow),
+    inset -1px -1px 0 var(--xp-button-highlight);
+  padding: calc(var(--xp-space-1) + 1px) calc(var(--xp-space-5) - 2px) calc(var(--xp-space-1) - 1px) calc(var(--xp-space-5) + 2px);
+}
+
+.xp-button:disabled {
+  color: var(--xp-text-disabled);
+  box-shadow:
+    inset 1px 1px 0 var(--xp-button-highlight),
+    inset -1px -1px 0 var(--xp-button-shadow);
+  cursor: default;
+  filter: none;
+}
+
+.xp-button:disabled:active {
+  padding: var(--xp-space-1) var(--xp-space-5);
+  box-shadow:
+    inset 1px 1px 0 var(--xp-button-highlight),
+    inset -1px -1px 0 var(--xp-button-shadow);
+}
+
+.xp-button-default {
+  outline: 1px solid var(--xp-button-default-border);
+  outline-offset: -4px;
+}
+
+/* ─── Input Fields ─── */
+.xp-input {
+  font-family: var(--xp-font);
+  font-size: var(--xp-font-size);
+  padding: 2px 4px;
+  border: none;
+  box-shadow:
+    inset 1px 1px 0 var(--xp-button-dark-shadow),
+    inset -1px -1px 0 var(--xp-button-highlight);
+  background: var(--xp-sunken-bg);
+  color: var(--xp-text);
+  outline: none;
+  height: 20px;
+}
+
+.xp-input:focus {
+  outline: 1px dotted var(--xp-text);
+  outline-offset: -2px;
+}
+
+.xp-input::placeholder {
+  color: var(--xp-text-disabled);
+}
+
+.xp-input:disabled {
+  background: var(--xp-window-bg);
+  color: var(--xp-text-disabled);
+}
+
+.xp-textarea {
+  font-family: var(--xp-font);
+  font-size: var(--xp-font-size);
+  padding: 3px 5px;
+  border: none;
+  box-shadow:
+    inset 1px 1px 0 var(--xp-button-dark-shadow),
+    inset -1px -1px 0 var(--xp-button-highlight);
+  background: var(--xp-sunken-bg);
+  color: var(--xp-text);
+  outline: none;
+  resize: both;
+  min-height: 40px;
+}
+
+.xp-textarea:focus {
+  outline: 1px dotted var(--xp-text);
+  outline-offset: -2px;
+}
+
+/* ─── Desktop Icons ─── */
+.xp-desktop-icon {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  width: 72px;
+  padding: var(--xp-space-1);
+  cursor: pointer;
+  text-align: center;
+  border: none;
+  background: none;
+  border-radius: 0;
+}
+
+.xp-desktop-icon:hover {
+  background: rgba(255,255,255,0.1);
+}
+
+.xp-desktop-icon img {
+  width: 32px;
+  height: 32px;
+  image-rendering: pixelated;
+}
+
+.xp-desktop-icon span {
+  font-family: var(--xp-font);
+  font-size: var(--xp-font-size);
+  color: #FFFFFF;
+  text-shadow: 1px 1px 1px rgba(0,0,0,0.8);
+  margin-top: 2px;
+  word-break: break-word;
+  max-width: 68px;
+  line-height: 1.2;
+  padding: 0 1px;
+}
+
+.xp-desktop-icon.selected {
+  background: rgba(49, 106, 197, 0.4);
+}
+
+.xp-desktop-icon.selected span {
+  background: var(--xp-selection-bg);
+  color: var(--xp-selection-text);
+  padding: 0 2px;
+  text-shadow: none;
+}
+
+/* ─── Dialog / Modal ─── */
+.xp-dialog-overlay {
+  position: fixed;
+  inset: 0;
+  background: var(--xp-dialog-overlay);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 10000;
+  pointer-events: none;
+}
+
+.xp-dialog-overlay:not(.hidden) {
+  pointer-events: auto;
+}
+
+.xp-dialog {
+  background: var(--xp-window-bg);
+  box-shadow:
+     1px  1px 0 var(--xp-button-highlight),
+    -1px -1px 0 var(--xp-button-dark-shadow),
+     3px  3px 0 rgba(0,0,0,0.3);
+  min-width: 320px;
+  max-width: 480px;
+  display: flex;
+  flex-direction: column;
+}
+
+.xp-dialog-titlebar {
+  display: flex;
+  align-items: center;
+  height: var(--xp-titlebar-height);
+  background: var(--xp-titlebar-gradient);
+  color: var(--xp-titlebar-text);
+  font-family: var(--xp-font);
+  font-size: var(--xp-font-size-title);
+  font-weight: 700;
+  padding: 0 var(--xp-space-2);
+  text-shadow: 1px 1px 0 rgba(0,0,0,0.4);
+}
+
+.xp-dialog-body {
+  padding: var(--xp-space-5);
+  font-family: var(--xp-font);
+  font-size: var(--xp-font-size);
+  color: var(--xp-text);
+  line-height: 1.4;
+}
+
+.xp-dialog-actions {
+  padding: var(--xp-space-3) var(--xp-space-5) var(--xp-space-4);
+  display: flex;
+  justify-content: flex-end;
+  gap: var(--xp-space-3);
+}
+
+/* ─── Progress Bar ─── */
+.xp-progress {
+  height: 18px;
+  background: var(--xp-sunken-bg);
+  box-shadow: inset 1px 1px 0 var(--xp-button-dark-shadow);
+  position: relative;
+  overflow: hidden;
+  width: 100%;
+}
+
+.xp-progress-fill {
+  height: 100%;
+  background: linear-gradient(90deg,
+    #3A6EA5 0%, #5A8EC5 25%,
+    #3A6EA5 50%, #5A8EC5 75%,
+    #3A6EA5 100%);
+  background-size: 40px 100%;
+  transition: width 0.3s ease;
+  position: relative;
+}
+
+.xp-progress-fill.animated {
+  animation: xp-progress-stripe 1.5s linear infinite;
+}
+
+@keyframes xp-progress-stripe {
+  0%   { background-position: 0 0; }
+  100% { background-position: 40px 0; }
+}
+
+.xp-progress-label {
+  position: absolute;
+  inset: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-family: var(--xp-font);
+  font-size: var(--xp-font-size);
+  color: var(--xp-text);
+  z-index: 1;
+}
+
+/* ─── Tooltip ─── */
+.xp-tooltip {
+  position: fixed;
+  background: var(--xp-tooltip-bg);
+  color: var(--xp-text);
+  font-family: var(--xp-font);
+  font-size: var(--xp-font-size);
+  padding: 2px 6px;
+  box-shadow:
+    inset 1px 1px 0 var(--xp-button-highlight),
+    inset -1px -1px 0 var(--xp-button-shadow);
+  z-index: 10001;
+  pointer-events: none;
+  white-space: nowrap;
+}
+
+/* ─── Scrollbar ─── */
+::-webkit-scrollbar {
+  width: 16px;
+  height: 16px;
+}
+
+::-webkit-scrollbar-track {
+  background: var(--xp-scrollbar-track);
+  box-shadow: inset 1px 1px 0 var(--xp-button-dark-shadow);
+}
+
+::-webkit-scrollbar-thumb {
+  background: var(--xp-scrollbar);
+  box-shadow:
+    inset 1px 1px 0 var(--xp-button-highlight),
+    inset -1px -1px 0 var(--xp-button-dark-shadow);
+}
+
+::-webkit-scrollbar-thumb:hover {
+  filter: brightness(0.95);
+}
+
+::-webkit-scrollbar-thumb:active {
+  box-shadow:
+    inset 1px 1px 0 var(--xp-button-dark-shadow),
+    inset -1px -1px 0 var(--xp-button-highlight);
+}
+
+::-webkit-scrollbar-button {
+  background: var(--xp-scrollbar-btn);
+  box-shadow:
+    inset 1px 1px 0 var(--xp-button-highlight),
+    inset -1px -1px 0 var(--xp-button-dark-shadow);
+  width: 16px;
+  height: 16px;
+  display: block;
+}
+
+::-webkit-scrollbar-button:hover {
+  filter: brightness(0.95);
+}
+
+::-webkit-scrollbar-button:active {
+  box-shadow:
+    inset 1px 1px 0 var(--xp-button-dark-shadow),
+    inset -1px -1px 0 var(--xp-button-highlight);
+}
+
+::-webkit-scrollbar-corner {
+  background: var(--xp-scrollbar);
+}
+
+/* ─── Notification / Toast ─── */
+.xp-notification {
+  position: fixed;
+  bottom: calc(var(--xp-taskbar-height) + var(--xp-space-3));
+  right: var(--xp-space-5);
+  width: 280px;
+  background: var(--xp-tooltip-bg);
+  box-shadow: var(--xp-shadow-window);
+  z-index: 9997;
+  padding: var(--xp-space-3);
+  display: flex;
+  align-items: flex-start;
+  gap: var(--xp-space-3);
+  animation: xp-notification-in 0.3s ease-out;
+}
+
+@keyframes xp-notification-in {
+  from {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.xp-notification-icon {
+  width: 24px;
+  height: 24px;
+  flex-shrink: 0;
+  image-rendering: pixelated;
+}
+
+.xp-notification-content {
+  flex: 1;
+  font-family: var(--xp-font);
+  font-size: var(--xp-font-size);
+  color: var(--xp-text);
+}
+
+.xp-notification-title {
+  font-weight: 700;
+  margin-bottom: 2px;
+}
+
+/* ─── Status Bar ─── */
+.xp-statusbar {
+  display: flex;
+  align-items: center;
+  height: 20px;
+  padding: 0 var(--xp-space-3);
+  background: var(--xp-window-bg);
+  border-top: 1px solid var(--xp-button-shadow);
+  font-family: var(--xp-font);
+  font-size: var(--xp-font-size);
+  gap: var(--xp-space-5);
+}
+
+.xp-statusbar-section {
+  display: flex;
+  align-items: center;
+  gap: var(--xp-space-2);
+}
+
+/* ─── Group Box ─── */
+.xp-groupbox {
+  border: 1px solid;
+  border-color: var(--xp-button-dark-shadow) var(--xp-button-highlight) var(--xp-button-highlight) var(--xp-button-dark-shadow);
+  padding: var(--xp-space-5) var(--xp-space-3) var(--xp-space-3);
+  position: relative;
+  margin-top: var(--xp-space-3);
+}
+
+.xp-groupbox-label {
+  position: absolute;
+  top: -8px;
+  left: var(--xp-space-3);
+  background: var(--xp-window-bg);
+  padding: 0 var(--xp-space-2);
+  font-family: var(--xp-font);
+  font-size: var(--xp-font-size);
+  font-weight: 700;
+  color: var(--xp-text);
+}
+
+/* ─── Tab Control ─── */
+.xp-tabs {
+  display: flex;
+  gap: 0;
+  border-bottom: 1px solid var(--xp-button-shadow);
+  margin-bottom: var(--xp-space-3);
+}
+
+.xp-tab {
+  padding: var(--xp-space-1) var(--xp-space-5);
+  font-family: var(--xp-font);
+  font-size: var(--xp-font-size);
+  background: var(--xp-button-face);
+  border: 1px solid var(--xp-button-shadow);
+  border-bottom: none;
+  cursor: pointer;
+  margin-bottom: -1px;
+  color: var(--xp-text);
+}
+
+.xp-tab:hover {
+  background: var(--xp-highlight);
+  color: var(--xp-highlight-text);
+}
+
+.xp-tab.active {
+  background: var(--xp-window-bg);
+  border-bottom: 1px solid var(--xp-window-bg);
+  font-weight: 700;
+}
+
+/* ─── List View ─── */
+.xp-listview {
+  width: 100%;
+  background: var(--xp-sunken-bg);
+  box-shadow: inset 1px 1px 0 var(--xp-button-dark-shadow);
+  border-collapse: collapse;
+}
+
+.xp-listview-header {
+  background: var(--xp-window-bg);
+  box-shadow:
+    inset 0 1px 0 var(--xp-button-highlight),
+    inset 0 -1px 0 var(--xp-button-shadow);
+  font-family: var(--xp-font);
+  font-size: var(--xp-font-size);
+  font-weight: 700;
+  padding: 2px 6px;
+  text-align: left;
+  user-select: none;
+}
+
+.xp-listview-row {
+  cursor: pointer;
+}
+
+.xp-listview-row:hover {
+  background: rgba(49, 106, 197, 0.15);
+}
+
+.xp-listview-row.selected {
+  background: var(--xp-selection-bg);
+  color: var(--xp-selection-text);
+}
+
+.xp-listview-cell {
+  padding: 1px 6px;
+  font-family: var(--xp-font);
+  font-size: var(--xp-font-size);
+  border-bottom: 1px solid #D4D0C8;
+}
+
+/* ─── Checkbox ─── */
+.xp-checkbox {
+  display: flex;
+  align-items: center;
+  gap: var(--xp-space-2);
+  font-family: var(--xp-font);
+  font-size: var(--xp-font-size);
+  cursor: pointer;
+  user-select: none;
+}
+
+.xp-checkbox input[type="checkbox"] {
+  appearance: none;
+  -webkit-appearance: none;
+  width: 13px;
+  height: 13px;
+  border: none;
+  box-shadow:
+    inset 1px 1px 0 var(--xp-button-dark-shadow),
+    inset -1px -1px 0 var(--xp-button-highlight);
+  background: var(--xp-sunken-bg);
+  cursor: pointer;
+  flex-shrink: 0;
+}
+
+.xp-checkbox input[type="checkbox"]:checked {
+  background: var(--xp-sunken-bg);
+  position: relative;
+}
+
+.xp-checkbox input[type="checkbox"]:checked::after {
+  content: '\2713';
+  position: absolute;
+  inset: -1px 0 0 1px;
+  font-size: 14px;
+  font-weight: 700;
+  color: var(--xp-text);
+  line-height: 1;
+}
+
+.xp-checkbox input[type="checkbox"]:focus {
+  outline: 1px dotted var(--xp-text);
+  outline-offset: 0;
+}
+
+/* ─── Radio ─── */
+.xp-radio {
+  display: flex;
+  align-items: center;
+  gap: var(--xp-space-2);
+  font-family: var(--xp-font);
+  font-size: var(--xp-font-size);
+  cursor: pointer;
+  user-select: none;
+}
+
+.xp-radio input[type="radio"] {
+  appearance: none;
+  -webkit-appearance: none;
+  width: 12px;
+  height: 12px;
+  border: none;
+  border-radius: 50%;
+  box-shadow:
+    inset 1px 1px 0 var(--xp-button-dark-shadow),
+    inset -1px -1px 0 var(--xp-button-highlight);
+  background: var(--xp-sunken-bg);
+  cursor: pointer;
+  flex-shrink: 0;
+}
+
+.xp-radio input[type="radio"]:checked {
+  background: var(--xp-sunken-bg);
+  position: relative;
+}
+
+.xp-radio input[type="radio"]:checked::after {
+  content: '';
+  position: absolute;
+  inset: 2px;
+  border-radius: 50%;
+  background: var(--xp-text);
+}
+
+/* ─── Resize Handle ─── */
+.xp-resize-handle {
+  position: absolute;
+  bottom: 0;
+  right: 0;
+  width: 12px;
+  height: 12px;
+  cursor: nwse-resize;
+  background: linear-gradient(135deg, transparent 50%, var(--xp-button-shadow) 50%, var(--xp-button-shadow) 60%, transparent 60%);
+}

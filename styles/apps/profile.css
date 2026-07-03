@@ -1,0 +1,242 @@
+/* ═══════════════════════════════════════════════════════
+   RetroMap — Profile App Styles
+   ═══════════════════════════════════════════════════════ */
+
+.profile-app-container {
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+  font-family: var(--xp-font);
+  font-size: var(--xp-font-size);
+  color: var(--xp-text);
+  user-select: none;
+}
+
+/* ─── Banner ─── */
+.profile-banner {
+  display: flex;
+  align-items: center;
+  gap: var(--xp-space-5);
+  padding: var(--xp-space-5);
+  background: linear-gradient(135deg, var(--xp-titlebar-top) 0%, var(--xp-titlebar-bottom) 100%);
+  color: #FFFFFF;
+  flex-shrink: 0;
+}
+
+.profile-avatar-container {
+  flex-shrink: 0;
+}
+
+.profile-avatar {
+  width: 64px;
+  height: 64px;
+  image-rendering: pixelated;
+  background: rgba(255,255,255,0.2);
+  border: 2px solid rgba(255,255,255,0.4);
+  padding: 4px;
+}
+
+.profile-name-section {
+  flex: 1;
+  min-width: 0;
+}
+
+.profile-displayname {
+  font-size: 18px;
+  font-weight: 700;
+  margin-bottom: 2px;
+  text-shadow: 1px 1px 2px rgba(0,0,0,0.5);
+}
+
+.profile-username {
+  font-size: var(--xp-font-size);
+  color: rgba(255,255,255,0.7);
+  margin-top: 4px;
+}
+
+.profile-status-row {
+  display: flex;
+  align-items: center;
+  gap: var(--xp-space-2);
+  margin-bottom: 2px;
+}
+
+.profile-status-indicator {
+  width: 8px;
+  height: 8px;
+  border-radius: 0;
+  flex-shrink: 0;
+}
+
+.profile-status-indicator.online {
+  background: #22C55E;
+}
+
+.profile-status-indicator.away {
+  background: #F59E0B;
+}
+
+.profile-status-indicator.offline {
+  background: #808080;
+}
+
+.profile-status-text {
+  font-size: var(--xp-font-size);
+  color: rgba(255,255,255,0.8);
+}
+
+/* ─── Tabs ─── */
+.profile-tabs {
+  display: flex;
+  border-bottom: 1px solid var(--xp-button-shadow);
+  flex-shrink: 0;
+}
+
+.profile-tab {
+  padding: var(--xp-space-1) var(--xp-space-5);
+  font-family: var(--xp-font);
+  font-size: var(--xp-font-size);
+  background: var(--xp-button-face);
+  border: 1px solid var(--xp-button-shadow);
+  border-bottom: none;
+  cursor: pointer;
+  color: var(--xp-text);
+  text-align: center;
+  position: relative;
+  top: 1px;
+}
+
+.profile-tab:hover {
+  filter: brightness(0.95);
+}
+
+.profile-tab.active {
+  background: var(--xp-sunken-bg);
+  border-bottom: 1px solid var(--xp-sunken-bg);
+  font-weight: 700;
+  z-index: 1;
+}
+
+/* ─── Tab Content ─── */
+.profile-tab-content {
+  flex: 1;
+  overflow-y: auto;
+  padding: var(--xp-space-3);
+}
+
+/* ─── Sections ─── */
+.profile-section {
+  margin-bottom: var(--xp-space-5);
+  padding-bottom: var(--xp-space-4);
+  border-bottom: 1px solid var(--xp-button-shadow);
+}
+
+.profile-section:last-child {
+  border-bottom: none;
+  margin-bottom: 0;
+}
+
+.profile-section-title {
+  font-size: var(--xp-font-size);
+  font-weight: 700;
+  color: var(--xp-titlebar-top);
+  margin-bottom: var(--xp-space-3);
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+}
+
+/* ─── Bio ─── */
+.profile-bio-text {
+  font-size: var(--xp-font-size);
+  color: var(--xp-text);
+  line-height: 1.5;
+  margin-bottom: var(--xp-space-3);
+  padding: var(--xp-space-3);
+  background: var(--xp-sunken-bg);
+  box-shadow: var(--xp-shadow-sunken);
+  min-height: 32px;
+}
+
+.profile-bio-edit {
+  margin-bottom: var(--xp-space-3);
+}
+
+.profile-bio-edit.hidden {
+  display: none;
+}
+
+.profile-bio-buttons {
+  display: flex;
+  gap: var(--xp-space-2);
+  margin-top: var(--xp-space-2);
+  justify-content: flex-end;
+}
+
+/* ─── Detail Rows ─── */
+.profile-detail-row {
+  display: flex;
+  padding: var(--xp-space-1) 0;
+  border-bottom: 1px dotted var(--xp-button-shadow);
+}
+
+.profile-detail-row:last-child {
+  border-bottom: none;
+}
+
+.profile-detail-label {
+  width: 120px;
+  flex-shrink: 0;
+  font-weight: 700;
+  color: var(--xp-text-disabled);
+}
+
+.profile-detail-value {
+  flex: 1;
+  color: var(--xp-text);
+}
+
+/* ─── Stats Grid ─── */
+.profile-stats-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: var(--xp-space-3);
+  margin-bottom: var(--xp-space-5);
+}
+
+.profile-stat-card {
+  background: var(--xp-button-face);
+  box-shadow: var(--xp-shadow-raised);
+  padding: var(--xp-space-4);
+  text-align: center;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: var(--xp-space-1);
+}
+
+.profile-stat-icon {
+  font-size: 24px;
+  line-height: 1;
+  color: var(--xp-titlebar-top);
+}
+
+.profile-stat-value {
+  font-size: 20px;
+  font-weight: 700;
+  color: var(--xp-text);
+}
+
+.profile-stat-label {
+  font-size: var(--xp-font-size);
+  color: var(--xp-text-disabled);
+}
+
+/* ─── Danger Zone ─── */
+.profile-danger {
+  padding-top: var(--xp-space-4);
+}
+
+.profile-empty-text {
+  color: var(--xp-text-disabled);
+  font-style: italic;
+}

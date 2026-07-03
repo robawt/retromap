@@ -1,0 +1,40 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 32 32" width="32" height="32">
+  <defs>
+    <style>
+      .p { shape-rendering: crispEdges; }
+    </style>
+  </defs>
+  <!-- Person 1 (left, blue) -->
+  <!-- Head -->
+  <rect class="p" x="4" y="4" width="8" height="8" fill="#6BB8E8"/>
+  <rect class="p" x="6" y="6" width="4" height="4" fill="#FFFFFF"/>
+  <rect class="p" x="6" y="14" width="2" height="2" fill="#3A6EA5"/>
+  <!-- Body -->
+  <rect class="p" x="4" y="12" width="8" height="4" fill="#4A90D9"/>
+  <rect class="p" x="4" y="16" width="2" height="6" fill="#4A90D9"/>
+  <rect class="p" x="10" y="16" width="2" height="6" fill="#4A90D9"/>
+  <!-- Torso -->
+  <rect class="p" x="6" y="12" width="4" height="4" fill="#6BB8E8"/>
+  <!-- Outline -->
+  <rect class="p" x="4" y="4" width="8" height="1" fill="#2A5A8A"/>
+  <rect class="p" x="4" y="11" width="8" height="1" fill="#2A5A8A"/>
+  <rect class="p" x="4" y="4" width="1" height="8" fill="#2A5A8A"/>
+  <rect class="p" x="11" y="4" width="1" height="8" fill="#2A5A8A"/>
+
+  <!-- Person 2 (right, green) -->
+  <!-- Head -->
+  <rect class="p" x="18" y="6" width="8" height="8" fill="#86D986"/>
+  <rect class="p" x="20" y="8" width="4" height="4" fill="#FFFFFF"/>
+  <rect class="p" x="20" y="16" width="2" height="2" fill="#3A8C3A"/>
+  <!-- Body -->
+  <rect class="p" x="18" y="14" width="8" height="4" fill="#5ABE5A"/>
+  <rect class="p" x="18" y="18" width="2" height="4" fill="#5ABE5A"/>
+  <rect class="p" x="24" y="18" width="2" height="4" fill="#5ABE5A"/>
+  <!-- Torso -->
+  <rect class="p" x="20" y="14" width="4" height="4" fill="#86D986"/>
+  <!-- Outline -->
+  <rect class="p" x="18" y="6" width="8" height="1" fill="#2A6A2A"/>
+  <rect class="p" x="18" y="13" width="8" height="1" fill="#2A6A2A"/>
+  <rect class="p" x="18" y="6" width="1" height="8" fill="#2A6A2A"/>
+  <rect class="p" x="25" y="6" width="1" height="8" fill="#2A6A2A"/>
+</svg>

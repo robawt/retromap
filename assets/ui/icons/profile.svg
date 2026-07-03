@@ -1,0 +1,35 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 32 32" width="32" height="32">
+  <defs>
+    <style>
+      .p { shape-rendering: crispEdges; }
+    </style>
+  </defs>
+  <!-- Head -->
+  <rect class="p" x="10" y="2" width="12" height="12" fill="#F5C6A0"/>
+  <rect class="p" x="12" y="4" width="8" height="8" fill="#FADCB5"/>
+  <!-- Eyes -->
+  <rect class="p" x="13" y="7" width="2" height="2" fill="#5A3A2A"/>
+  <rect class="p" x="17" y="7" width="2" height="2" fill="#5A3A2A"/>
+  <!-- Mouth -->
+  <rect class="p" x="14" y="11" width="4" height="1" fill="#C47D4A"/>
+  <!-- Hair -->
+  <rect class="p" x="10" y="2" width="12" height="2" fill="#4A3520"/>
+  <rect class="p" x="10" y="2" width="2" height="4" fill="#4A3520"/>
+  <rect class="p" x="20" y="2" width="2" height="4" fill="#4A3520"/>
+  <!-- Body / Torso -->
+  <rect class="p" x="8" y="14" width="16" height="6" fill="#4A90D9"/>
+  <rect class="p" x="10" y="14" width="12" height="4" fill="#6BB8E8"/>
+  <!-- Collar -->
+  <rect class="p" x="14" y="14" width="4" height="2" fill="#FFFFFF"/>
+  <!-- Arms -->
+  <rect class="p" x="6" y="16" width="2" height="8" fill="#F5C6A0"/>
+  <rect class="p" x="24" y="16" width="2" height="8" fill="#F5C6A0"/>
+  <!-- Legs / Pants -->
+  <rect class="p" x="10" y="20" width="4" height="8" fill="#3A5A7A"/>
+  <rect class="p" x="18" y="20" width="4" height="8" fill="#3A5A7A"/>
+  <!-- Shoes -->
+  <rect class="p" x="10" y="28" width="4" height="2" fill="#2A3A4A"/>
+  <rect class="p" x="18" y="28" width="4" height="2" fill="#2A3A4A"/>
+  <!-- Pants gap -->
+  <rect class="p" x="14" y="20" width="4" height="2" fill="#4A90D9"/>
+</svg>

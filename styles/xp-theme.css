@@ -1,0 +1,136 @@
+/* ═══════════════════════════════════════════════════════
+   RetroMap — Windows XP Luna Theme
+   ═══════════════════════════════════════════════════════ */
+
+/* ─── Design Tokens (Blue Theme - Default) ─── */
+:root {
+  /* ── Colors ── */
+  --xp-titlebar-top: #0A246A;
+  --xp-titlebar-bottom: #3A6EA5;
+  --xp-titlebar-text: #FFFFFF;
+  --xp-window-bg: #ECE9D8;
+  --xp-window-border-light: #FFFFFF;
+  --xp-window-border-dark: #716F64;
+  --xp-desktop-bg: #3A6EA5;
+  --xp-taskbar: #245EDC;
+  --xp-taskbar-item: #3A6EA5;
+  --xp-taskbar-item-active: #1A4CB5;
+  --xp-button-face: #ECE9D8;
+  --xp-button-highlight: #FFFFFF;
+  --xp-button-shadow: #ACA899;
+  --xp-button-dark-shadow: #716F64;
+  --xp-button-default-border: #0A246A;
+  --xp-highlight: #316AC5;
+  --xp-highlight-text: #FFFFFF;
+  --xp-selection-bg: #316AC5;
+  --xp-selection-text: #FFFFFF;
+  --xp-text: #000000;
+  --xp-text-disabled: #ACA899;
+  --xp-link: #0000FF;
+  --xp-scrollbar: #D4D0C8;
+  --xp-scrollbar-track: #F0F0F0;
+  --xp-scrollbar-btn: #D4D0C8;
+  --xp-sunken-bg: #FFFFFF;
+  --xp-tooltip-bg: #FFFFE1;
+  --xp-dialog-overlay: rgba(0, 0, 0, 0.4);
+  --xp-close-btn-hover: #E81123;
+  --xp-close-btn-hover-text: #FFFFFF;
+
+  /* ── Typography ── */
+  --xp-font: Tahoma, 'MS Sans Serif', Geneva, sans-serif;
+  --xp-font-size: 11px;
+  --xp-font-size-lg: 14px;
+  --xp-font-size-title: 12px;
+  --xp-font-size-small: 10px;
+
+  /* ── Spacing ── */
+  --xp-space-1: 2px;
+  --xp-space-2: 4px;
+  --xp-space-3: 8px;
+  --xp-space-4: 12px;
+  --xp-space-5: 16px;
+  --xp-space-6: 24px;
+  --xp-space-7: 32px;
+  --xp-window-padding: 8px;
+  --xp-control-padding: 4px 12px;
+
+  /* ── Borders ── */
+  --xp-border-width: 2px;
+  --xp-border-radius: 0px;
+  --xp-titlebar-height: 24px;
+  --xp-taskbar-height: 30px;
+
+  /* ── Shadows ── */
+  --xp-shadow-raised: inset 1px 1px 0 #FFFFFF, inset -1px -1px 0 #ACA899;
+  --xp-shadow-sunken: inset 1px 1px 0 #716F64, inset -1px -1px 0 #FFFFFF;
+  --xp-shadow-window:
+     1px  1px 0 #FFFFFF,
+    -1px -1px 0 #716F64,
+     2px  2px 0 rgba(0,0,0,0.25);
+
+  /* ── Gradients ── */
+  --xp-titlebar-gradient: linear-gradient(180deg, var(--xp-titlebar-top) 0%, var(--xp-titlebar-bottom) 100%);
+  --xp-taskbar-gradient: linear-gradient(180deg, #245EDC 0%, #1A4CB5 100%);
+  --xp-start-gradient: linear-gradient(180deg, #3A6EA5 0%, #0A246A 100%);
+}
+
+/* ─── Silver Theme ─── */
+.theme-silver {
+  --xp-titlebar-top: #848484;
+  --xp-titlebar-bottom: #AAAAAA;
+  --xp-desktop-bg: #848484;
+  --xp-taskbar: #A0A0A0;
+  --xp-taskbar-item: #9A9A9A;
+  --xp-taskbar-item-active: #8A8A8A;
+  --xp-titlebar-gradient: linear-gradient(180deg, #848484 0%, #AAAAAA 100%);
+  --xp-taskbar-gradient: linear-gradient(180deg, #B0B0B0 0%, #909090 100%);
+  --xp-start-gradient: linear-gradient(180deg, #9A9A9A 0%, #848484 100%);
+}
+
+/* ─── Olive Green Theme ─── */
+.theme-olive {
+  --xp-titlebar-top: #6B6B3C;
+  --xp-titlebar-bottom: #8B8B5C;
+  --xp-desktop-bg: #6B6B3C;
+  --xp-taskbar: #6B6B3C;
+  --xp-taskbar-item: #7A7A4A;
+  --xp-taskbar-item-active: #5A5A2E;
+  --xp-titlebar-gradient: linear-gradient(180deg, #6B6B3C 0%, #8B8B5C 100%);
+  --xp-taskbar-gradient: linear-gradient(180deg, #7A7A4A 0%, #5A5A2E 100%);
+  --xp-start-gradient: linear-gradient(180deg, #8B8B5C 0%, #6B6B3C 100%);
+}
+
+/* ─── Base Reset ─── */
+*, *::before, *::after {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+html, body {
+  width: 100%;
+  height: 100%;
+  overflow: hidden;
+  font-family: var(--xp-font);
+  font-size: var(--xp-font-size);
+  color: var(--xp-text);
+  background: var(--xp-desktop-bg);
+  -webkit-font-smoothing: none;
+  -moz-osx-font-smoothing: unset;
+}
+
+body {
+  position: relative;
+  background: var(--xp-desktop-bg);
+}
+
+/* ─── Selection ─── */
+::selection {
+  background: var(--xp-selection-bg);
+  color: var(--xp-selection-text);
+}
+
+/* ─── Hidden utility ─── */
+.hidden {
+  display: none !important;
+}

@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>RetroMap</title>
+
+  <!-- Styles -->
+  <link rel="stylesheet" href="styles/xp-theme.css" />
+  <link rel="stylesheet" href="styles/main.css" />
+  <link rel="stylesheet" href="styles/components.css" />
+  <link rel="stylesheet" href="styles/apps/login.css" />
+  <link rel="stylesheet" href="styles/apps/profile.css" />
+
+  <!-- Preconnect for Google Fonts (game use later) -->
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+</head>
+<body>
+
+  <!-- ─── Desktop ─── -->
+  <div id="desktop" class="xp-desktop">
+    <div id="desktop-icons" class="xp-desktop-icons">
+      <!-- Desktop icons rendered by Desktop.js -->
+    </div>
+  </div>
+
+  <!-- ─── Windows Container ─── -->
+  <div id="windows-container" class="xp-windows-container"></div>
+
+  <!-- ─── Start Menu ─── -->
+  <div id="start-menu" class="xp-start-menu hidden">
+    <div class="xp-start-menu-sidebar">
+      <img src="assets/ui/logos/retromap-logo.svg" alt="RetroMap" class="xp-start-menu-logo"
+           onerror="this.style.display='none'" />
+      <span class="xp-start-menu-brand">RetroMap</span>
+    </div>
+    <div class="xp-start-menu-items">
+      <!-- Rendered by StartMenu.js -->
+    </div>
+  </div>
+
+  <!-- ─── Taskbar ─── -->
+  <div id="taskbar" class="xp-taskbar">
+    <button id="start-button" class="xp-start-button" aria-label="Start">
+      <img src="assets/ui/icons/start-logo.svg" alt="" class="xp-start-logo"
+           onerror="this.style.display='none'" />
+      <span>Start</span>
+    </button>
+    <div id="taskbar-items" class="xp-taskbar-items">
+      <!-- Taskbar items rendered by Taskbar.js -->
+    </div>
+    <div class="xp-taskbar-tray">
+      <span id="taskbar-clock" class="xp-taskbar-clock"></span>
+    </div>
+  </div>
+
+  <!-- ─── Dialog Container ─── -->
+  <div id="dialog-overlay" class="xp-dialog-overlay hidden"></div>
+
+  <!-- Scripts -->
+  <script src="src/utils/helpers.js"></script>
+  <script src="src/utils/dateFormatter.js"></script>
+  <script src="src/utils/soundManager.js"></script>
+  <script src="src/shell/WindowManager.js"></script>
+  <script src="src/shell/Window.js"></script>
+  <script src="src/shell/Desktop.js"></script>
+  <script src="src/shell/Taskbar.js"></script>
+  <script src="src/shell/StartMenu.js"></script>
+  <script src="src/components/Button.js"></script>
+  <script src="src/components/Input.js"></script>
+  <script src="src/components/Dialog.js"></script>
+  <script src="src/components/ProgressBar.js"></script>
+  <script src="src/services/StorageService.js"></script>
+  <script src="src/apps/login/LoginApp.js"></script>
+  <script src="src/apps/profile/ProfileApp.js"></script>
+  <script src="src/main.js"></script>
+</body>
+</html>

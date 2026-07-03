@@ -1,0 +1,28 @@
+# OS files
+.DS_Store
+Thumbs.db
+Desktop.ini
+
+# Editor files
+.vscode/
+.idea/
+*.swp
+*.swo
+
+# Environment
+.env
+.env.local
+
+# Dependencies (if any added later)
+node_modules/
+bower_components/
+
+# Generated/build output
+dist/
+build/
+*.log
+
+# The generated assets directory (keep structure, ignore generated images)
+# Uncomment when generated assets are committed separately:
+# assets/sprites/generated/
+# assets/audio/

@@ -1,0 +1,189 @@
+/* ═══════════════════════════════════════════════════════
+   RetroMap — Login App Styles
+   ═══════════════════════════════════════════════════════ */
+
+.login-app-container {
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+  font-family: Tahoma, 'MS Sans Serif', Geneva, sans-serif;
+  font-size: 11px;
+  color: #000000;
+  user-select: none;
+}
+
+/* ─── Header ─── */
+.login-header {
+  text-align: center;
+  padding: 16px 16px 8px;
+}
+
+.login-logo {
+  margin-bottom: 8px;
+}
+
+.login-logo img {
+  width: 48px;
+  height: 48px;
+  image-rendering: pixelated;
+}
+
+.login-title {
+  font-size: 18px;
+  font-weight: 700;
+  color: var(--xp-titlebar-top);
+  margin-bottom: 4px;
+  letter-spacing: 1px;
+}
+
+.login-subtitle {
+  font-size: var(--xp-font-size);
+  color: #555555;
+  margin-bottom: 8px;
+}
+
+/* ─── Tabs ─── */
+.login-tabs {
+  display: flex;
+  border-bottom: 1px solid var(--xp-button-shadow);
+  margin: 0 16px;
+}
+
+.login-tab {
+  flex: 1;
+  padding: 6px 12px;
+  font-family: var(--xp-font);
+  font-size: var(--xp-font-size);
+  background: var(--xp-button-face);
+  border: 1px solid var(--xp-button-shadow);
+  border-bottom: none;
+  cursor: pointer;
+  color: var(--xp-text);
+  text-align: center;
+  position: relative;
+  top: 1px;
+}
+
+.login-tab:hover {
+  filter: brightness(0.95);
+}
+
+.login-tab.active {
+  background: var(--xp-sunken-bg);
+  border-bottom: 1px solid var(--xp-sunken-bg);
+  font-weight: 700;
+  z-index: 1;
+}
+
+/* ─── Form ─── */
+.login-form {
+  padding: 16px;
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.login-field {
+  display: flex;
+  flex-direction: column;
+  gap: 3px;
+}
+
+.login-label {
+  font-size: 11px;
+  font-weight: 700;
+  color: #000000;
+}
+
+.login-input {
+  width: 100%;
+  height: 22px;
+  font-family: var(--xp-font);
+  font-size: var(--xp-font-size);
+  padding: 2px 5px;
+  border: none;
+  box-shadow: var(--xp-shadow-sunken);
+  background: var(--xp-sunken-bg);
+  outline: none;
+}
+
+.login-input:focus {
+  outline: 1px dotted var(--xp-text);
+  outline-offset: -2px;
+}
+
+.login-input::placeholder {
+  color: var(--xp-text-disabled);
+}
+
+/* ─── Error ─── */
+.login-error {
+  background: #FFF0F0;
+  border: 1px solid var(--xp-close-btn-hover);
+  color: #B00020;
+  padding: 6px 8px;
+  font-family: var(--xp-font);
+  font-size: var(--xp-font-size);
+  line-height: 1.4;
+}
+
+.login-error.hidden {
+  display: none;
+}
+
+/* ─── Checkbox Row ─── */
+.login-checkbox-row {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  margin: 4px 0;
+}
+
+.login-checkbox {
+  appearance: none;
+  -webkit-appearance: none;
+  width: 13px;
+  height: 13px;
+  border: none;
+  box-shadow: var(--xp-shadow-sunken);
+  background: var(--xp-sunken-bg);
+  cursor: pointer;
+  flex-shrink: 0;
+}
+
+.login-checkbox:checked::after {
+  content: '\2713';
+  display: block;
+  font-size: 14px;
+  font-weight: 700;
+  color: var(--xp-text);
+  line-height: 13px;
+  text-align: center;
+}
+
+.login-checkbox-label {
+  font-size: 11px;
+  color: #000000;
+  cursor: pointer;
+}
+
+/* ─── Buttons ─── */
+.login-buttons {
+  display: flex;
+  justify-content: center;
+  margin-top: 8px;
+}
+
+.login-buttons .xp-button {
+  min-width: 120px;
+}
+
+/* ─── Footer ─── */
+.login-footer {
+  text-align: center;
+  padding: 8px;
+  border-top: 1px solid #ACA899;
+  font-size: 10px;
+  color: #808080;
+}
