@@ -114,8 +114,14 @@ class GameScene extends Phaser.Scene {
       if (this.textures.exists('water-tile-' + variant)) return { texture: 'water-tile-' + variant, blocked: true };
       return { texture: 'tile-water', blocked: true };
     }
+    // Cliff transition ring — elevation edge between water and land (tinyswords principle)
+    if (y === 1 || y === MAP_H - 2 || x === 1 || x === MAP_W - 2) {
+      const cliffIdx = (x * 5 + y * 7) % 18;
+      if (this.textures.exists('cliff-tile-' + cliffIdx)) return { texture: 'cliff-tile-' + cliffIdx, blocked: true };
+      return { texture: 'tile-grass', blocked: true };
+    }
 
-    // Pond zone — water tile variants
+    // Pond zone — water tile variants with beach edge transition (tinyswords terrain color variants)
     if (this._isInZone(ZONES.POND, x, y)) {
       const cx = 30, cy = 36;
       const dist = Math.sqrt((x - cx) ** 2 + (y - cy) ** 2);
@@ -124,12 +130,21 @@ class GameScene extends Phaser.Scene {
         if (this.textures.exists('water-tile-' + variant)) return { texture: 'water-tile-' + variant, blocked: true };
         return { texture: 'tile-water', blocked: true };
       }
-      if (dist <= 5) return { texture: 'tile-grass', blocked: false };
+      // Beach/sand transition between water and grass (terrain color variant)
+      if (dist <= 5) {
+        const beachIdx = (x * 7 + y * 11) % 15;
+        if (this.textures.exists('beach-tile-' + beachIdx)) return { texture: 'beach-tile-' + beachIdx, blocked: false };
+        return { texture: 'tile-grass', blocked: false };
+      }
       return { texture: 'tile-path', blocked: false };
     }
 
-    // Farmhouse area
+    // Farmhouse area — elevated feel with path border
     if (this._isInZone(ZONES.FARMHOUSE, x, y)) {
+      // Use path tiles for the house foundation/patio area
+      if (y >= 8 && y <= 12 && x >= 27 && x <= 31) {
+        return { texture: 'tile-path', blocked: y <= 10 }; // patio walkable at door level
+      }
       return { texture: 'tile-grass', blocked: false };
     }
 
@@ -146,8 +161,12 @@ class GameScene extends Phaser.Scene {
       return { texture: 'tile-grass', blocked: false };
     }
 
-    // Forest — grass
+    // Forest — darker grass with path edges (elevated forest feel)
     if (this._isInZone(ZONES.FOREST, x, y)) {
+      if (x === ZONES.FOREST.x1 || x === ZONES.FOREST.x2 || y === ZONES.FOREST.y1 || y === ZONES.FOREST.y2) {
+        const cliffIdx = (x * 3 + y * 5) % 18;
+        if (this.textures.exists('cliff-tile-' + cliffIdx)) return { texture: 'cliff-tile-' + cliffIdx, blocked: false };
+      }
       return { texture: 'tile-grass', blocked: false };
     }
 
@@ -160,8 +179,12 @@ class GameScene extends Phaser.Scene {
       return { texture: 'tile-grass', blocked: false };
     }
 
-    // Flora's Garden
+    // Flora's Garden — lighter grass with flower patches
     if (this._isInZone(ZONES.FLORA_GARDEN, x, y)) {
+      if ((x + y) % 3 === 0) {
+        const beachIdx = (x * 5 + y * 7) % 15;
+        if (this.textures.exists('beach-tile-' + beachIdx)) return { texture: 'beach-tile-' + beachIdx, blocked: false };
+      }
       return { texture: 'tile-grass', blocked: false };
     }
 
@@ -216,6 +239,8 @@ class GameScene extends Phaser.Scene {
      ═══════════════════════════════════════════════════ */
 
   _placeFarmhouse() {
+    // ─── Shadow under house (tinyswords elevation principle) ───
+    this.add.ellipse(29 * TILE_SIZE, 9 * TILE_SIZE + 6, 64, 12, 0x000000, 0.12).setDepth(4);
     // House sprite (96×128) — placed at its bottom-center
     this.add.image(29 * TILE_SIZE, 9 * TILE_SIZE, 'house')
       .setDepth(5).setOrigin(0.5, 1).setScale(1);
@@ -230,7 +255,8 @@ class GameScene extends Phaser.Scene {
     for (let dx = 28; dx <= 30; dx++) {
       if (this._collisionMap[11] !== undefined) this._collisionMap[11][dx] = false;
     }
-    // Mailbox
+    // Mailbox with shadow
+    this.add.ellipse(25 * TILE_SIZE + TILE_SIZE / 2, 12 * TILE_SIZE + 4, 10, 4, 0x000000, 0.12).setDepth(3);
     this.add.image(25 * TILE_SIZE + TILE_SIZE / 2, 12 * TILE_SIZE, 'chest')
       .setDepth(4).setScale(1.5);
   }
@@ -275,10 +301,13 @@ class GameScene extends Phaser.Scene {
         animal._tileY = pos.y;
         animal._speed = cfg.speed;
         animal._animalType = cfg.type;
-        // Play idle animation if available
+        // Play idle animation if available — staggered start (tinyswords stagger principle)
         const animKey = 'animal-' + cfg.type + '-idle';
         if (this.anims.exists(animKey)) {
           animal.play(animKey);
+          // Stagger animation offset to prevent synchronized movement
+          animal.anims.setTimeScale(0.8 + Math.random() * 0.4);
+          animal.anims.setProgress(Math.random());
         }
         this._animals.push(animal);
       }
@@ -410,6 +439,8 @@ class GameScene extends Phaser.Scene {
       const tx = Phaser.Math.Between(ZONES.FOREST.x1 + 1, ZONES.FOREST.x2 - 1);
       const ty = Phaser.Math.Between(ZONES.FOREST.y1 + 1, ZONES.FOREST.y2 - 1);
       if (!this._isOnPath(tx, ty)) {
+        // Shadow one tile below (tinyswords shadow principle)
+        this.add.ellipse(tx * TILE_SIZE + TILE_SIZE / 2, (ty + 1) * TILE_SIZE + TILE_SIZE / 2, 16, 6, 0x000000, 0.2).setDepth(4);
         const useSmall = Math.random() < 0.4;
         if (useSmall && this.textures.exists('tree-oak-small')) {
           const frame = Math.floor(Math.random() * 2);
@@ -434,29 +465,36 @@ class GameScene extends Phaser.Scene {
       { x: 24, y: 4 }, { x: 25, y: 3 }, { x: 33, y: 3 }, { x: 34, y: 4 }
     ];
     for (const t of houseTrees) {
+      // Shadow one tile below (tinyswords principle)
+      this.add.ellipse(t.x * TILE_SIZE + TILE_SIZE / 2, (t.y + 1) * TILE_SIZE + TILE_SIZE / 2, 14, 5, 0x000000, 0.2).setDepth(4);
       this.add.image(t.x * TILE_SIZE + TILE_SIZE / 2, t.y * TILE_SIZE + TILE_SIZE / 2, 'tree-oak')
         .setDepth(5).setOrigin(0.5, 0.65).setScale(0.4);
       if (this._collisionMap[t.y] !== undefined) this._collisionMap[t.y][t.x] = true;
     }
 
-    // Decorative flowers using outdoor decor slices
+    // Decorative items using specific outdoor decor slices (purposeful, not random)
     const decorSpots = [
-      { x: 23, y: 12 }, { x: 35, y: 12 }, { x: 20, y: 14 },
-      { x: 24, y: 16 }, { x: 38, y: 34 }, { x: 20, y: 30 },
-      { x: 14, y: 34 }, { x: 22, y: 28 }, { x: 4, y: 14 }
+      { x: 23, y: 12, type: 'flower' }, { x: 35, y: 12, type: 'flower' },
+      { x: 20, y: 14, type: 'mushroom' }, { x: 24, y: 16, type: 'stone' },
+      { x: 38, y: 34, type: 'flower' }, { x: 20, y: 30, type: 'stone' },
+      { x: 14, y: 34, type: 'mushroom' }, { x: 22, y: 28, type: 'pot' },
+      { x: 4, y: 14, type: 'flower' }
     ];
+    const decorRanges = {
+      flower:   [0, 14],    // Rows 0-1: flowers & plants
+      mushroom: [21, 28],   // Row 3: mushrooms
+      stone:    [35, 42],   // Row 5: stones/rocks
+      pot:      [63, 70]    // Row 9: pots & tools
+    };
     for (const spot of decorSpots) {
       if (this._collisionMap[spot.y] && !this._collisionMap[spot.y][spot.x]) {
-        // Try using a decor slice, fallback to flower graphics
-        const decorIdx = Math.floor(Math.random() * 84);
+        const range = decorRanges[spot.type] || [0, 84];
+        const decorIdx = Phaser.Math.Between(range[0], range[1] - 1);
         if (this.textures.exists('decor-' + decorIdx)) {
-          const decor = this.add.image(
+          this.add.image(
             spot.x * TILE_SIZE + TILE_SIZE / 2, spot.y * TILE_SIZE + TILE_SIZE / 2,
             'decor-' + decorIdx
           ).setDepth(4).setScale(0.8);
-          if (decorIdx === 67 || decorIdx === 68) { // Flower pots
-            if (this._collisionMap[spot.y] !== undefined) this._collisionMap[spot.y][spot.x] = true;
-          }
         } else {
           this._addFlowerSprite(spot.x, spot.y,
             Phaser.Math.RND.pick([0xFF6B6B, 0xFFD93D, 0x6BCB77, 0x4D96FF, 0xFF8E9E]));
@@ -641,12 +679,21 @@ class GameScene extends Phaser.Scene {
       this._mmTileData[y] = [];
       for (let x = 0; x < MAP_W; x++) {
         const tile = this._getTileAt(x, y);
-        this._mmTileData[y][x] = this._mmColors[tile.texture] || this._mmColors.default;
+        this._mmTileData[y][x] = this._minimapColor(tile.texture);
       }
     }
     this._drawMinimap();
     this._mmPlayerDot = this.add.image(0, 0, 'minimap-dot').setScrollFactor(0).setDepth(52);
     this._mmNPCDot = this.add.image(0, 0, 'minimap-npc').setScrollFactor(0).setDepth(51);
+  }
+
+  _minimapColor(texture) {
+    if (texture.startsWith('beach-tile')) return 0xD4C484;
+    if (texture.startsWith('cliff-tile')) return 0x8B7355;
+    if (texture.startsWith('farmland')) return 0x7C9A5A;
+    if (texture.startsWith('water-tile') || texture === 'tile-water') return 0x6BA8D8;
+    if (texture.startsWith('path-tile') || texture === 'tile-path') return 0xC8B888;
+    return this._mmColors[texture] || this._mmColors.default;
   }
 
   _drawMinimap() {

@@ -1,0 +1,11 @@
+{
+  "version": 1,
+  "skills": {
+    "tinyswords-tilemap": {
+      "source": "chongdashu/phaserjs-tinyswords",
+      "sourceType": "github",
+      "skillPath": ".claude/skills/tinyswords-tilemap/SKILL.md",
+      "computedHash": "f636df905ae6302a14adadf14bfe0ddcd28d05a7175433e43b358c5bffe81b90"
+    }
+  }
+}
