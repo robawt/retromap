@@ -240,7 +240,7 @@ class GameScene extends Phaser.Scene {
 
   _placeFarmhouse() {
     // ─── Shadow under house (tinyswords elevation principle) ───
-    this.add.ellipse(29 * TILE_SIZE, 9 * TILE_SIZE + 6, 64, 12, 0x000000, 0.12).setDepth(4);
+    this.add.ellipse(29 * TILE_SIZE, 9 * TILE_SIZE + 6, 64, 12, 0x000000, 0.25).setDepth(4);
     // House sprite (96×128) — placed at its bottom-center
     this.add.image(29 * TILE_SIZE, 9 * TILE_SIZE, 'house')
       .setDepth(5).setOrigin(0.5, 1).setScale(1);
@@ -440,7 +440,7 @@ class GameScene extends Phaser.Scene {
       const ty = Phaser.Math.Between(ZONES.FOREST.y1 + 1, ZONES.FOREST.y2 - 1);
       if (!this._isOnPath(tx, ty)) {
         // Shadow one tile below (tinyswords shadow principle)
-        this.add.ellipse(tx * TILE_SIZE + TILE_SIZE / 2, (ty + 1) * TILE_SIZE + TILE_SIZE / 2, 16, 6, 0x000000, 0.2).setDepth(4);
+        this.add.ellipse(tx * TILE_SIZE + TILE_SIZE / 2, (ty + 1) * TILE_SIZE + TILE_SIZE / 2, 16, 6, 0x000000, 0.35).setDepth(4);
         const useSmall = Math.random() < 0.4;
         if (useSmall && this.textures.exists('tree-oak-small')) {
           const frame = Math.floor(Math.random() * 2);
@@ -466,7 +466,7 @@ class GameScene extends Phaser.Scene {
     ];
     for (const t of houseTrees) {
       // Shadow one tile below (tinyswords principle)
-      this.add.ellipse(t.x * TILE_SIZE + TILE_SIZE / 2, (t.y + 1) * TILE_SIZE + TILE_SIZE / 2, 14, 5, 0x000000, 0.2).setDepth(4);
+      this.add.ellipse(t.x * TILE_SIZE + TILE_SIZE / 2, (t.y + 1) * TILE_SIZE + TILE_SIZE / 2, 14, 5, 0x000000, 0.35).setDepth(4);
       this.add.image(t.x * TILE_SIZE + TILE_SIZE / 2, t.y * TILE_SIZE + TILE_SIZE / 2, 'tree-oak')
         .setDepth(5).setOrigin(0.5, 0.65).setScale(0.4);
       if (this._collisionMap[t.y] !== undefined) this._collisionMap[t.y][t.x] = true;

@@ -128,12 +128,7 @@ const SoundManager = {
    * Register all default XP sounds
    */
   registerDefaults() {
-    // Register file-based sounds — Web Audio beep fallback used if files missing
-    this.register('open', 'assets/audio/sfx/windows-xp-open.wav');
-    this.register('close', 'assets/audio/sfx/windows-xp-close.wav');
-    this.register('error', 'assets/audio/sfx/windows-xp-error.wav');
-    this.register('notify', 'assets/audio/sfx/windows-xp-notify.wav');
-    this.register('start', 'assets/audio/sfx/windows-xp-start.wav');
-    this.register('shutdown', 'assets/audio/sfx/windows-xp-shutdown.wav');
+    // Sound effects generated via Web Audio API fallback (_playBeep)
+    // No file-based registrations needed — the beep system handles all sounds
   }
 };

@@ -77,14 +77,14 @@
 .ig-navbar {
   display: flex;
   align-items: center;
-  height: 50px;
+  height: 52px;
   background: #FFFFFF;
-  border-bottom: 1px solid #DBDBDB;
+  border-bottom: 1px solid #E0E0E0;
   padding: 0 20px;
   gap: 0;
   flex-shrink: 0;
   z-index: 10;
-  box-shadow: 0 1px 2px rgba(0,0,0,0.05);
+  box-shadow: 0 1px 3px rgba(0,0,0,0.06);
 }
 
 .ig-nav-brand {
@@ -115,6 +115,10 @@
   color: #0A246A;
   letter-spacing: -0.3px;
   white-space: nowrap;
+  background: linear-gradient(135deg, #0A246A 0%, #3A6EA5 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
 }
 
 .ig-nav-center {
@@ -131,16 +135,22 @@
   background: none;
   border: none;
   cursor: pointer;
-  padding: 4px 10px;
+  padding: 6px 12px;
   position: relative;
-  transition: opacity 0.15s;
+  transition: all 0.2s ease;
   opacity: 0.55;
-  border-radius: 4px;
+  border-radius: 6px;
 }
 
 .ig-nav-btn:hover {
-  opacity: 0.8;
-  background: #F0F0F0;
+  opacity: 0.85;
+  background: #F5F5F5;
+  transform: translateY(-1px);
+}
+
+.ig-nav-btn:active {
+  transform: translateY(0);
+  background: #EEEEEE;
 }
 
 .ig-nav-btn.active {
@@ -150,13 +160,13 @@
 .ig-nav-btn.active::after {
   content: '';
   position: absolute;
-  bottom: -2px;
+  bottom: 0;
   left: 50%;
   transform: translateX(-50%);
-  width: 20px;
-  height: 2px;
-  background: #2563EB;
-  border-radius: 1px;
+  width: 22px;
+  height: 2.5px;
+  background: linear-gradient(90deg, #2563EB, #3B82F6);
+  border-radius: 2px;
 }
 
 .ig-nav-btn-inner {
@@ -198,6 +208,20 @@
   font-weight: 700;
 }
 
+.ig-nav-btn.active .ig-nav-icon {
+  opacity: 1;
+  filter: none;
+}
+
+.ig-nav-icon {
+  transition: opacity 0.2s, filter 0.2s;
+  opacity: 0.85;
+}
+
+.ig-nav-btn:hover .ig-nav-icon {
+  opacity: 1;
+}
+
 /* ─── Nav Right Section ─── */
 .ig-nav-right {
   flex: 1;
@@ -212,23 +236,26 @@
   display: flex;
   align-items: center;
   justify-content: center;
-  min-width: 22px;
+  min-width: 24px;
   height: 22px;
-  padding: 0 6px;
-  background: #E81123;
+  padding: 0 8px;
+  background: linear-gradient(135deg, #E81123 0%, #FF4444 100%);
   color: #FFFFFF;
   font-family: var(--xp-font);
   font-size: 10px;
   font-weight: 700;
   border: none;
-  border-radius: 10px;
+  border-radius: 12px;
   flex-shrink: 0;
   cursor: pointer;
-  transition: background 0.15s;
+  transition: all 0.2s;
+  box-shadow: 0 1px 3px rgba(232,17,35,0.3);
 }
 
 .ig-nav-badge:hover {
-  background: #FF1A2D;
+  background: linear-gradient(135deg, #FF1A2D 0%, #FF5555 100%);
+  transform: scale(1.05);
+  box-shadow: 0 2px 6px rgba(232,17,35,0.4);
 }
 
 .ig-nav-badge.hidden {
@@ -247,7 +274,7 @@
 
 .ig-view-container {
   flex: 1;
-  max-width: 680px;
+  max-width: 700px;
   display: flex;
   flex-direction: column;
   min-height: 0;
@@ -255,6 +282,7 @@
   background: #FFFFFF;
   border-left: 1px solid #E8E8E5;
   border-right: 1px solid #E8E8E5;
+  box-shadow: 0 0 20px rgba(0,0,0,0.04);
 }
 
 /* ─── Windows container fix — no black overlay issues ─── */

@@ -20,7 +20,7 @@ const SocialShell = {
       { id: 'friends',  label: 'Friends',      app: FriendsApp,  icon: 'assets/ui/icons/friends.svg' },
       { id: 'profile',  label: 'Profile',      app: ProfileApp,  icon: 'assets/ui/icons/profile.svg' },
       { id: 'game',     label: 'Retro World',  app: GameApp,     icon: 'assets/ui/icons/game.svg' },
-      { id: 'editor',   label: 'Pixel Editor', app: PixelEditorApp, icon: null }
+      { id: 'editor',   label: 'Pixel Editor', app: PixelEditorApp, icon: 'assets/ui/icons/pixel-editor.svg' }
     ];
     this._container = document.getElementById(containerId);
     if (!this._container) {

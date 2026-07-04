@@ -1,0 +1,32 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 32 32" width="32" height="32">
+  <defs>
+    <style>
+      .p { shape-rendering: crispEdges; }
+    </style>
+  </defs>
+  <!-- Canvas background -->
+  <rect class="p" x="4" y="4" width="24" height="24" fill="#FFFFFF"/>
+  <rect class="p" x="4" y="4" width="24" height="24" fill="none" stroke="#888" stroke-width="1"/>
+  <!-- Pixel grid -->
+  <rect class="p" x="8" y="8" width="4" height="4" fill="#FF6B6B"/>
+  <rect class="p" x="12" y="8" width="4" height="4" fill="#FFD93D"/>
+  <rect class="p" x="16" y="8" width="4" height="4" fill="#6BCB77"/>
+  <rect class="p" x="8" y="12" width="4" height="4" fill="#4D96FF"/>
+  <rect class="p" x="12" y="12" width="4" height="4" fill="#C084FC"/>
+  <rect class="p" x="16" y="12" width="4" height="4" fill="#FF8E9E"/>
+  <rect class="p" x="8" y="16" width="4" height="4" fill="#F59E0B"/>
+  <rect class="p" x="12" y="16" width="4" height="4" fill="#10B981"/>
+  <rect class="p" x="16" y="16" width="4" height="4" fill="#6366F1"/>
+  <!-- Paintbrush handle -->
+  <rect class="p" x="20" y="18" width="3" height="8" fill="#8B4513"/>
+  <rect class="p" x="21" y="16" width="1" height="2" fill="#8B4513"/>
+  <!-- Brush tip -->
+  <rect class="p" x="20" y="16" width="3" height="2" fill="#4A90D9"/>
+  <rect class="p" x="20" y="15" width="1" height="1" fill="#4A90D9"/>
+  <rect class="p" x="22" y="15" width="1" height="1" fill="#4A90D9"/>
+  <!-- Outline -->
+  <rect class="p" x="4" y="4" width="24" height="1" fill="#000" opacity="0.2"/>
+  <rect class="p" x="4" y="27" width="24" height="1" fill="#000" opacity="0.15"/>
+  <rect class="p" x="4" y="4" width="1" height="24" fill="#000" opacity="0.2"/>
+  <rect class="p" x="27" y="4" width="1" height="24" fill="#000" opacity="0.15"/>
+</svg>
