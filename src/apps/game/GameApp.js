@@ -57,7 +57,7 @@ const GameApp = {
       width: Math.max(400, Math.floor(rect.width)),
       height: Math.max(300, Math.floor(rect.height)),
       parent: wrapper.id,
-      backgroundColor: '#1a1a2e',
+      backgroundColor: '#4A7C3F',
       pixelArt: true,
       roundPixels: true,
       scale: {

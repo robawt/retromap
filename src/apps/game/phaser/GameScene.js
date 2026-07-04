@@ -801,8 +801,8 @@ class GameScene extends Phaser.Scene {
   _createMinimap() {
     this._mmW = 140;
     this._mmH = 105;
-    const cam = this.cameras.main;
-    this._mmX = cam.width - this._mmW - 8;
+    const gameW = this.game.config.width;
+    this._mmX = gameW - this._mmW - 8;
     this._mmY = 8;
     this._mmScale = 2.2;
     this._mmColors = {
@@ -876,7 +876,8 @@ class GameScene extends Phaser.Scene {
     this._minimapLarge = !this._minimapLarge;
     this._mmW = this._minimapLarge ? 280 : 140;
     this._mmH = this._minimapLarge ? 210 : 105;
-    this._mmX = this.cameras.main.width - this._mmW - 8;
+    const gameW = this.game.config.width;
+    this._mmX = gameW - this._mmW - 8;
     this._mmScale = this._minimapLarge ? 4.4 : 2.2;
 
     this._mmBg.clear();
