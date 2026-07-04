@@ -40,10 +40,6 @@ class BootScene extends Phaser.Scene {
     this.load.spritesheet('player-sheet', 'assets/game/Player.png', {
       frameWidth: 48, frameHeight: 64
     });
-    this.load.spritesheet('player-actions', 'assets/game/Player_Actions.png', {
-      frameWidth: 48, frameHeight: 64
-    });
-
     // Tiles (16×16)
     this.load.image('tile-grass', 'assets/game/Grass_Middle.png');
     this.load.image('tile-water', 'assets/game/Water_Middle.png');
@@ -69,12 +65,9 @@ class BootScene extends Phaser.Scene {
     this.load.image('animal-pig', 'assets/game/Pig.png');
     this.load.image('animal-sheep', 'assets/game/Sheep.png');
 
-    this.load.start();
   }
 
   create() {
-    const P = this._P || 0xFFFFFF;
-
     // ─── Generate animations from player sprite sheet ───
     // Sheet layout: 48×64 frames, 4 cols × 5 rows = 20 frames
     // Row 0 (frames 0-3): Walk Down
