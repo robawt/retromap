@@ -81,9 +81,6 @@ class GameScene extends Phaser.Scene {
     // ─── Minimap ───
     this._createMinimap();
 
-    // ─── Fog of War ───
-    this._createFogOfWar();
-
     // ─── Controls ───
     this.cursors = this.input.keyboard.createCursorKeys();
     this.wasd = {
@@ -892,28 +889,6 @@ class GameScene extends Phaser.Scene {
   }
 
   /* ═══════════════════════════════════════════════════
-     FOG OF WAR
-     ═══════════════════════════════════════════════════ */
-
-  _createFogOfWar() {
-    const w = this.cameras.main.width;
-    const h = this.cameras.main.height;
-    this._fogRT = this.add.renderTexture(0, 0, w, h)
-      .setScrollFactor(0).setDepth(48).setBlendMode(Phaser.BlendModes.MULTIPLY);
-    this._fogRT.fill(0x000000, 0.88);
-  }
-
-  _updateFog() {
-    if (!this.player || !this._fogRT) return;
-    const cam = this.cameras.main;
-    this._fogRT.clear();
-    this._fogRT.fill(0x000000, 0.88);
-    const sx = this.player.x - cam.scrollX - 80;
-    const sy = this.player.y - cam.scrollY - 88;
-    this._fogRT.erase('fog-reveal', sx, sy);
-  }
-
-  /* ═══════════════════════════════════════════════════
      GAME LOOP
      ═══════════════════════════════════════════════════ */
 
@@ -933,7 +908,6 @@ class GameScene extends Phaser.Scene {
       this._closeNPCDialogue();
     }
 
-    this._updateFog();
     this._updateMinimap();
   }
 
