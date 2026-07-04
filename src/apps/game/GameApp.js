@@ -54,10 +54,10 @@ const GameApp = {
 
     const config = {
       type: Phaser.AUTO,
-      width: Math.max(320, Math.floor(rect.width)),
-      height: Math.max(240, Math.floor(rect.height)),
+      width: Math.max(400, Math.floor(rect.width)),
+      height: Math.max(300, Math.floor(rect.height)),
       parent: wrapper.id,
-      backgroundColor: '#3A6EA5',
+      backgroundColor: '#1a1a2e',
       pixelArt: true,
       roundPixels: true,
       scale: {
