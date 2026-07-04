@@ -1,6 +1,6 @@
 /* ═══════════════════════════════════════════════════════
-   RetroMap — Phaser Boot Scene (Cute Farm Sprites)
-   Loads sprite pack from Cute_Fantasy_Free assets
+   RetroMap — Phaser Boot Scene (Cute Fantasy Sprites)
+   Loads sprite pack with CORRECT frame sizes & animations
    ═══════════════════════════════════════════════════════ */
 
 class BootScene extends Phaser.Scene {
@@ -11,102 +11,125 @@ class BootScene extends Phaser.Scene {
   preload() {
     const w = this.cameras.main.width;
     const h = this.cameras.main.height;
-
     this.cameras.main.setBackgroundColor('#87CEEB');
 
     // Loading UI
-    this.add.text(w / 2, h / 2 - 60, '🌾 RetroMap', {
-      fontFamily: 'Tahoma', fontSize: '20px', color: '#5B8C5A', fontStyle: 'bold'
+    this.add.text(Math.max(w / 2, 200), h / 2 - 60, '🌾 RetroMap Farm', {
+      fontFamily: 'Tahoma', fontSize: '18px', color: '#5B8C5A', fontStyle: 'bold'
     }).setOrigin(0.5);
-
-    this.add.text(w / 2, h / 2 - 36, 'Planting crops...', {
+    this.add.text(Math.max(w / 2, 200), h / 2 - 36, 'Setting up the farm...', {
       fontFamily: 'Tahoma', fontSize: '11px', color: '#8B7B6B'
     }).setOrigin(0.5);
-
     const barBg = this.add.graphics();
     barBg.fillStyle(0xD8D0C8, 1);
-    barBg.fillRect(w / 2 - 100, h / 2 + 10, 200, 16);
-
+    barBg.fillRect(Math.max(w / 2 - 100, 100), h / 2 + 10, 200, 16);
     const barFill = this.add.graphics();
     this.load.on('progress', (value) => {
       barFill.clear();
       barFill.fillStyle(0x7BA87B, 1);
-      barFill.fillRect(w / 2 - 99, h / 2 + 11, 198 * value, 14);
+      barFill.fillRect(Math.max(w / 2 - 99, 101), h / 2 + 11, 198 * value, 14);
     });
 
-    // ─── Load all sprite pack assets ───
-
-    // Player sprite sheet (48×64 per frame, 4 cols × 5 rows = 20 frames)
+    // ─── PLAYER (192×320, 48×64 frames, 4×5=20 frames) ───
     this.load.spritesheet('player-sheet', 'assets/game/Player.png', {
       frameWidth: 48, frameHeight: 64
     });
-    // Tiles (16×16)
+    // Player Actions (96×576, 48×48 frames, 2×12=24 frames)
+    this.load.spritesheet('player-actions', 'assets/game/Player_Actions.png', {
+      frameWidth: 48, frameHeight: 48
+    });
+
+    // ─── TILES ───
+    // Basic 16×16 tiles
     this.load.image('tile-grass', 'assets/game/Grass_Middle.png');
     this.load.image('tile-water', 'assets/game/Water_Middle.png');
     this.load.image('tile-path', 'assets/game/Path_Middle.png');
+    // Larger tile sheets (need slicing at 16×16)
+    this.load.image('farmland', 'assets/game/FarmLand_Tile.png');     // 48×48 → 3×3=9
+    this.load.image('water-tile', 'assets/game/Water_Tile.png');     // 48×96 → 3×6=18
+    this.load.image('path-tile', 'assets/game/Path_Tile.png');       // 48×96 → 3×6=18
+    this.load.image('beach-tile', 'assets/game/Beach_Tile.png');     // 80×48 → 5×3=15
+    this.load.image('cliff-tile', 'assets/game/Cliff_Tile.png');     // 48×96 → 3×6=18
 
-    // Larger tiles (need slicing)
-    this.load.image('farmland', 'assets/game/FarmLand_Tile.png');
-    this.load.image('beach-tile', 'assets/game/Beach_Tile.png');
-    this.load.image('cliff-tile', 'assets/game/Cliff_Tile.png');
+    // ─── STRUCTURES ───
+    this.load.image('house', 'assets/game/House_1_Wood_Base_Blue.png');  // 96×128
+    this.load.image('chest', 'assets/game/Chest.png');                   // 16×16
 
-    // Decorations
-    this.load.image('tree-oak', 'assets/game/Oak_Tree.png');
-    this.load.image('chest', 'assets/game/Chest.png');
-    this.load.image('house', 'assets/game/House_1_Wood_Base_Blue.png');
+    // ─── TREES ───
+    this.load.image('tree-oak', 'assets/game/Oak_Tree.png');            // 64×80 single
+    this.load.spritesheet('tree-oak-small', 'assets/game/Oak_Tree_Small.png', {
+      frameWidth: 48, frameHeight: 48                                   // 96×48 → 2×1=2 frames
+    });
+
+    // ─── FENCES (64×64, 32×32 frames, 2×2=4) ───
     this.load.image('fences', 'assets/game/Fences.png');
+
+    // ─── OUTDOOR DECOR (112×192, sliced at 16×16) ───
     this.load.image('outdoor-decor', 'assets/game/Outdoor_Decor_Free.png');
 
-    // Animals
-    this.load.image('animal-chicken', 'assets/game/Chicken.png');
-    this.load.image('animal-cow', 'assets/game/Cow.png');
-    this.load.image('animal-pig', 'assets/game/Pig.png');
-    this.load.image('animal-sheep', 'assets/game/Sheep.png');
+    // ─── BRIDGE (144×64, sliced into 48×64 segments) ───
+    this.load.image('bridge', 'assets/game/Bridge_Wood.png');
 
+    // ─── ANIMALS (64×64 each, 32×32 frames, 2×2=4 frames each) ───
+    this.load.spritesheet('animal-chicken', 'assets/game/Chicken.png', { frameWidth: 32, frameHeight: 32 });
+    this.load.spritesheet('animal-cow', 'assets/game/Cow.png', { frameWidth: 32, frameHeight: 32 });
+    this.load.spritesheet('animal-pig', 'assets/game/Pig.png', { frameWidth: 32, frameHeight: 32 });
+    this.load.spritesheet('animal-sheep', 'assets/game/Sheep.png', { frameWidth: 32, frameHeight: 32 });
+
+    // ─── ENEMIES / DECOR ───
+    this.load.spritesheet('skeleton', 'assets/game/Skeleton.png', {   // 192×320, 48×64 frames
+      frameWidth: 48, frameHeight: 64
+    });
+    this.load.spritesheet('slime-green', 'assets/game/Slime_Green.png', { // 512×192, 32×96 frames
+      frameWidth: 32, frameHeight: 96
+    });
   }
 
   create() {
-    // ─── Generate animations from player sprite sheet ───
-    // Sheet layout: 48×64 frames, 4 cols × 5 rows = 20 frames
-    // Row 0 (frames 0-3): Walk Down
-    // Row 1 (frames 4-7): Walk Left
-    // Row 2 (frames 8-11): Walk Right
-    // Row 3 (frames 12-15): Walk Up
-    // Row 4 (frames 16-19): Idle/Static
+    // ─── Slice tile sheets into individual 16×16 textures ───
+    this._sliceTileSheet('farmland', 16, 16, 'farmland-');       // 9 tiles
+    this._sliceTileSheet('water-tile', 16, 16, 'water-tile-');   // 18 tiles
+    this._sliceTileSheet('path-tile', 16, 16, 'path-tile-');     // 18 tiles
+    this._sliceTileSheet('beach-tile', 16, 16, 'beach-tile-');   // 15 tiles
+    this._sliceTileSheet('cliff-tile', 16, 16, 'cliff-tile-');   // 18 tiles
+    this._sliceTileSheet('fences', 32, 32, 'fence-');            // 4 fence pieces
+    this._sliceTileSheet('outdoor-decor', 16, 16, 'decor-');     // 84 decor items
+    this._sliceTileSheet('bridge', 48, 64, 'bridge-');            // 3 bridge segments
 
-    this._createAnim('walk-down', 'player-sheet', [0, 1, 0, 2], 8);
-    this._createAnim('walk-left', 'player-sheet', [4, 5, 4, 6], 8);
-    this._createAnim('walk-right', 'player-sheet', [8, 9, 8, 10], 8);
-    this._createAnim('walk-up', 'player-sheet', [12, 13, 12, 14], 8);
+    // ─── Create Player Animations ───
+    this._createAnim('player-walk-down',  'player-sheet', [0, 1, 2, 3], 8);
+    this._createAnim('player-walk-left',  'player-sheet', [4, 5, 6, 7], 8);
+    this._createAnim('player-walk-right', 'player-sheet', [8, 9, 10, 11], 8);
+    this._createAnim('player-walk-up',   'player-sheet', [12, 13, 14, 15], 8);
+    // Idle: use standing frame from each row (frame 1 is standing, frame 17 is idle-left, etc.)
+    this.anims.create({ key: 'player-idle', frames: [{ key: 'player-sheet', frame: 1 }], frameRate: 1, repeat: 0 });
 
-    // Idle frames (static pose for each direction)
-    this._createAnim('idle-down', 'player-sheet', [16], 1);
-    this._createAnim('idle-left', 'player-sheet', [17], 1);
-    this._createAnim('idle-right', 'player-sheet', [18], 1);
-    this._createAnim('idle-up', 'player-sheet', [19], 1);
+    // ─── Create Animal Animations (4 frames each) ───
+    for (const animal of ['chicken', 'cow', 'pig', 'sheep']) {
+      const key = 'animal-' + animal;
+      // Idle animation: gentle bobbing using frames 0-2-0-1
+      this._createAnim(key + '-idle', key, [0, 1, 2, 1], 4);
+    }
 
-    // ─── Slice larger tiles into sub-textures ───
-    this._sliceTileSheet('farmland', 48, 48, 'farmland-');
-    this._sliceTileSheet('cliff-tile', 48, 48, 'cliff-tile-');
-    this._sliceTileSheet('beach-tile', 48, 48, 'beach-tile-');
-    this._sliceTileSheet('fences', 32, 32, 'fence-');
-    this._sliceTileSheet('outdoor-decor', 16, 16, 'decor-');
+    // ─── Create Bridge segments ───
+    // Frame 0: left segment, Frame 1: middle, Frame 2: right
+    // Just use them as static images, no animation needed
 
-    // Generate minimap dots and other UI textures
+    // ─── Generate UI textures ───
     this._genUI();
 
+    // Start the game
     this.scene.start('GameScene');
   }
 
   /* ─── Helper: create animation ─── */
   _createAnim(key, sheet, frames, rate) {
     if (this.anims.exists(key)) return;
-    const frameObjs = frames.map(f => ({ key: sheet, frame: f }));
     this.anims.create({
       key,
-      frames: frameObjs,
+      frames: frames.map(f => ({ key: sheet, frame: f })),
       frameRate: rate,
-      repeat: key.startsWith('idle') ? 0 : -1
+      repeat: -1
     });
   }
 
@@ -114,6 +137,8 @@ class BootScene extends Phaser.Scene {
   _sliceTileSheet(key, fw, fh, prefix) {
     const tex = this.textures.get(key);
     if (!tex || !tex.source || !tex.source[0]) return;
+    const srcCanvas = tex.source[0].image;
+    if (!srcCanvas) return;
     const srcW = tex.source[0].width;
     const srcH = tex.source[0].height;
     const cols = Math.floor(srcW / fw);
@@ -121,26 +146,14 @@ class BootScene extends Phaser.Scene {
     let idx = 0;
     for (let r = 0; r < rows; r++) {
       for (let c = 0; c < cols; c++) {
-        const name = prefix + idx;
-        this._extractFrame(key, c * fw, r * fh, fw, fh, name);
+        const canvas = document.createElement('canvas');
+        canvas.width = fw; canvas.height = fh;
+        const ctx = canvas.getContext('2d');
+        ctx.drawImage(srcCanvas, c * fw, r * fh, fw, fh, 0, 0, fw, fh);
+        this.textures.addCanvas(prefix + idx, canvas);
         idx++;
       }
     }
-  }
-
-  /* ─── Helper: extract a frame from a texture and create a new texture ─── */
-  _extractFrame(sourceKey, sx, sy, sw, sh, destKey) {
-    const srcTex = this.textures.get(sourceKey);
-    if (!srcTex || !srcTex.source || !srcTex.source[0]) return;
-    const srcCanvas = srcTex.source[0].image;
-    if (!srcCanvas) return;
-
-    const canvas = document.createElement('canvas');
-    canvas.width = sw;
-    canvas.height = sh;
-    const ctx = canvas.getContext('2d');
-    ctx.drawImage(srcCanvas, sx, sy, sw, sh, 0, 0, sw, sh);
-    this.textures.addCanvas(destKey, canvas);
   }
 
   /* ─── UI textures ─── */
@@ -159,24 +172,5 @@ class BootScene extends Phaser.Scene {
     nctx.fillStyle = '#7BA87B';
     nctx.fillRect(0, 0, 3, 3);
     this.textures.addCanvas('minimap-npc', npcCanvas);
-
-    // Fog of war reveal texture
-    const fogSize = 160;
-    const fogCanvas = document.createElement('canvas');
-    fogCanvas.width = fogSize;
-    fogCanvas.height = fogSize;
-    const fogCtx = fogCanvas.getContext('2d');
-    const gradient = fogCtx.createRadialGradient(
-      fogSize / 2, fogSize / 2, 0,
-      fogSize / 2, fogSize / 2, fogSize / 2
-    );
-    gradient.addColorStop(0, 'rgba(0,0,0,0)');
-    gradient.addColorStop(0.3, 'rgba(0,0,0,0)');
-    gradient.addColorStop(0.5, 'rgba(0,0,0,0.25)');
-    gradient.addColorStop(0.75, 'rgba(0,0,0,0.55)');
-    gradient.addColorStop(1, 'rgba(0,0,0,1)');
-    fogCtx.fillStyle = gradient;
-    fogCtx.fillRect(0, 0, fogSize, fogSize);
-    this.textures.addCanvas('fog-reveal', fogCanvas);
   }
 }
