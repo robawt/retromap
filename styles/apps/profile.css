@@ -1,5 +1,5 @@
 /* ═══════════════════════════════════════════════════════
-   RetroMap — Profile App Styles
+   RetroMap — Profile App Styles (Polished)
    ═══════════════════════════════════════════════════════ */
 
 .profile-app-container {
@@ -16,9 +16,9 @@
 .profile-banner {
   display: flex;
   align-items: center;
-  gap: var(--xp-space-5);
-  padding: var(--xp-space-5);
-  background: linear-gradient(135deg, var(--xp-titlebar-top) 0%, var(--xp-titlebar-bottom) 100%);
+  gap: 16px;
+  padding: 20px;
+  background: linear-gradient(135deg, #0A246A 0%, #3A6EA5 100%);
   color: #FFFFFF;
   flex-shrink: 0;
 }
@@ -30,13 +30,14 @@
 }
 
 .profile-avatar {
-  width: 64px;
-  height: 64px;
+  width: 72px;
+  height: 72px;
   image-rendering: pixelated;
   background: rgba(255,255,255,0.2);
   border: 2px solid rgba(255,255,255,0.4);
   padding: 4px;
   display: block;
+  border-radius: 4px;
 }
 
 /* ─── Avatar Frames ─── */
@@ -94,43 +95,34 @@
 }
 
 .profile-displayname {
-  font-size: 18px;
+  font-size: 20px;
   font-weight: 700;
-  margin-bottom: 2px;
+  margin-bottom: 4px;
   text-shadow: 1px 1px 2px rgba(0,0,0,0.5);
 }
 
 .profile-username {
-  font-size: var(--xp-font-size);
+  font-size: 12px;
   color: rgba(255,255,255,0.7);
-  margin-top: 4px;
 }
 
 .profile-status-row {
   display: flex;
   align-items: center;
-  gap: var(--xp-space-2);
-  margin-bottom: 2px;
+  gap: 6px;
+  margin-bottom: 4px;
 }
 
 .profile-status-indicator {
   width: 8px;
   height: 8px;
-  border-radius: 0;
+  border-radius: 50%;
   flex-shrink: 0;
 }
 
-.profile-status-indicator.online {
-  background: #22C55E;
-}
-
-.profile-status-indicator.away {
-  background: #F59E0B;
-}
-
-.profile-status-indicator.offline {
-  background: #808080;
-}
+.profile-status-indicator.online { background: #22C55E; }
+.profile-status-indicator.away { background: #F59E0B; }
+.profile-status-indicator.offline { background: #808080; }
 
 .profile-status-text {
   font-size: var(--xp-font-size);
@@ -140,47 +132,50 @@
 /* ─── Tabs ─── */
 .profile-tabs {
   display: flex;
-  border-bottom: 1px solid var(--xp-button-shadow);
+  border-bottom: 1px solid #E8E8E5;
   flex-shrink: 0;
+  background: #FFFFFF;
+  padding: 0 14px;
 }
 
 .profile-tab {
-  padding: var(--xp-space-1) var(--xp-space-5);
+  padding: 10px 20px;
   font-family: var(--xp-font);
   font-size: var(--xp-font-size);
-  background: var(--xp-button-face);
-  border: 1px solid var(--xp-button-shadow);
-  border-bottom: none;
+  background: none;
+  border: none;
+  border-bottom: 2px solid transparent;
   cursor: pointer;
-  color: var(--xp-text);
-  text-align: center;
-  position: relative;
-  top: 1px;
+  color: #8E8E8E;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+  font-weight: 600;
+  transition: color 0.15s, border-color 0.15s;
 }
 
 .profile-tab:hover {
-  filter: brightness(0.95);
+  color: #262626;
 }
 
 .profile-tab.active {
-  background: var(--xp-sunken-bg);
-  border-bottom: 1px solid var(--xp-sunken-bg);
+  color: #0A246A;
+  border-bottom-color: #0A246A;
   font-weight: 700;
-  z-index: 1;
+  background: none;
 }
 
 /* ─── Tab Content ─── */
 .profile-tab-content {
   flex: 1;
   overflow-y: auto;
-  padding: var(--xp-space-3);
+  padding: 12px 14px;
 }
 
 /* ─── Sections ─── */
 .profile-section {
-  margin-bottom: var(--xp-space-5);
-  padding-bottom: var(--xp-space-4);
-  border-bottom: 1px solid var(--xp-button-shadow);
+  margin-bottom: 20px;
+  padding-bottom: 16px;
+  border-bottom: 1px solid #E8E8E5;
 }
 
 .profile-section:last-child {
@@ -189,10 +184,10 @@
 }
 
 .profile-section-title {
-  font-size: var(--xp-font-size);
+  font-size: 12px;
   font-weight: 700;
-  color: var(--xp-titlebar-top);
-  margin-bottom: var(--xp-space-3);
+  color: #0A246A;
+  margin-bottom: 12px;
   text-transform: uppercase;
   letter-spacing: 0.5px;
 }
@@ -200,17 +195,18 @@
 /* ─── Bio ─── */
 .profile-bio-text {
   font-size: var(--xp-font-size);
-  color: var(--xp-text);
-  line-height: 1.5;
-  margin-bottom: var(--xp-space-3);
-  padding: var(--xp-space-3);
-  background: var(--xp-sunken-bg);
-  box-shadow: var(--xp-shadow-sunken);
-  min-height: 32px;
+  color: #262626;
+  line-height: 1.6;
+  margin-bottom: 12px;
+  padding: 12px;
+  background: #FAFAFA;
+  border: 1px solid #E8E8E5;
+  border-radius: 4px;
+  min-height: 36px;
 }
 
 .profile-bio-edit {
-  margin-bottom: var(--xp-space-3);
+  margin-bottom: 12px;
 }
 
 .profile-bio-edit.hidden {
@@ -219,16 +215,16 @@
 
 .profile-bio-buttons {
   display: flex;
-  gap: var(--xp-space-2);
-  margin-top: var(--xp-space-2);
+  gap: 8px;
+  margin-top: 8px;
   justify-content: flex-end;
 }
 
 /* ─── Detail Rows ─── */
 .profile-detail-row {
   display: flex;
-  padding: var(--xp-space-1) 0;
-  border-bottom: 1px dotted var(--xp-button-shadow);
+  padding: 6px 0;
+  border-bottom: 1px solid #F0F0F0;
 }
 
 .profile-detail-row:last-child {
@@ -239,56 +235,59 @@
   width: 120px;
   flex-shrink: 0;
   font-weight: 700;
-  color: var(--xp-text-disabled);
+  color: #8E8E8E;
 }
 
 .profile-detail-value {
   flex: 1;
-  color: var(--xp-text);
+  color: #1A1A1A;
 }
 
 /* ─── Stats Grid ─── */
 .profile-stats-grid {
   display: grid;
   grid-template-columns: 1fr 1fr;
-  gap: var(--xp-space-3);
-  margin-bottom: var(--xp-space-5);
+  gap: 10px;
+  margin-bottom: 20px;
 }
 
 .profile-stat-card {
-  background: var(--xp-button-face);
-  box-shadow: var(--xp-shadow-raised);
-  padding: var(--xp-space-4);
+  background: #FAFAFA;
+  border: 1px solid #E8E8E5;
+  border-radius: 4px;
+  padding: 16px;
   text-align: center;
   display: flex;
   flex-direction: column;
   align-items: center;
-  gap: var(--xp-space-1);
+  gap: 4px;
 }
 
 .profile-stat-icon {
   font-size: 24px;
   line-height: 1;
-  color: var(--xp-titlebar-top);
+  color: #0A246A;
 }
 
 .profile-stat-value {
   font-size: 20px;
   font-weight: 700;
-  color: var(--xp-text);
+  color: #1A1A1A;
 }
 
 .profile-stat-label {
-  font-size: var(--xp-font-size);
-  color: var(--xp-text-disabled);
+  font-size: 10px;
+  color: #8E8E8E;
+  text-transform: uppercase;
+  letter-spacing: 0.3px;
 }
 
 /* ─── Danger Zone ─── */
 .profile-danger {
-  padding-top: var(--xp-space-4);
+  padding-top: 16px;
 }
 
 .profile-empty-text {
-  color: var(--xp-text-disabled);
+  color: #8E8E8E;
   font-style: italic;
 }
