@@ -58,8 +58,10 @@ const GameApp = {
       pixelArt: true,
       roundPixels: true,
       scale: {
-        mode: Phaser.Scale.NONE,
-        autoCenter: Phaser.Scale.NO_CENTER
+        mode: Phaser.Scale.FIT,
+        autoCenter: Phaser.Scale.CENTER_BOTH,
+        width: this.defaultWidth,
+        height: this.defaultHeight
       },
       scene: [BootScene, GameScene]
     };
