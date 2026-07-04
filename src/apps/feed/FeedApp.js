@@ -566,7 +566,10 @@ const FeedApp = {
       if (chatBtn) {
         chatBtn.addEventListener('click', () => {
           UIDialog.close();
-          dispatchEvent('launch-app', { appId: 'chat', title: 'Chat' });
+          // Switch to Messages view in the social shell
+          if (typeof SocialShell !== 'undefined') {
+            SocialShell.switchView('messages');
+          }
           setTimeout(() => {
             dispatchEvent('open-chat-conversation', { with: userId });
           }, 300);

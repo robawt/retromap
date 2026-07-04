@@ -35,17 +35,15 @@ const RetroMap = {
       }
     });
 
-    // 4. Initialize Taskbar
-    Taskbar.init();
+    // 4. Initialize Social Shell (social media layout)
+    SocialShell.init('social-shell');
 
-    // 5. Initialize Start Menu
-    StartMenu.init();
+    // Show social shell on login, hide on logout
+    listenEvent('user-login', () => {
+      SocialShell.show();
+    });
 
-    // 5. Initialize Desktop with default icons
-    Desktop.init('desktop');
-    Desktop.loadDefaults();
-
-    // 6. Register apps
+    // 5. Register apps
     this.registerApp('login', LoginApp);
     this.registerApp('profile', ProfileApp);
     this.registerApp('feed', FeedApp);
@@ -59,13 +57,16 @@ const RetroMap = {
       this._handleLaunchApp(e.detail);
     });
 
-    // 8. Hide loading screen (if any)
+    // 6. Hide loading screen (if any)
     this._hideLoading();
 
-    // 9. Auto-open login window on start (if not already logged in)
+    // 7. Auto-open login window on start (if not already logged in)
     setTimeout(() => {
       if (!this.isLoggedIn()) {
         this.openLogin();
+      } else {
+        // Already logged in — show social shell directly
+        SocialShell.show();
       }
     }, 200);
 

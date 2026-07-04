@@ -484,7 +484,7 @@
 
 .notif-container {
   position: fixed;
-  bottom: calc(var(--xp-taskbar-height) + var(--xp-space-3));
+  bottom: 8px;
   right: var(--xp-space-5);
   z-index: 9997;
   display: flex;

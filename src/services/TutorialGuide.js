@@ -83,6 +83,7 @@ const TutorialGuide = {
   _showPage() {
     if (this._currentPage >= this.PAGES.length) {
       // Tutorial complete
+      UIDialog.close();
       EconomyService.markTutorialCompleted(this._username);
       this._username = null;
       return;

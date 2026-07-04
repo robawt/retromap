@@ -345,11 +345,11 @@ const FriendsApp = {
 
   /* ─── Start a chat with a user ─── */
   _startChat(username) {
-    dispatchEvent('launch-app', {
-      appId: 'chat',
-      title: 'Chat'
-    });
-    // After the window opens, select that conversation
+    // Switch to Messages view in the social shell
+    if (typeof SocialShell !== 'undefined') {
+      SocialShell.switchView('messages');
+    }
+    // Select the conversation after view switches
     setTimeout(() => {
       dispatchEvent('open-chat-conversation', { with: username });
     }, 300);

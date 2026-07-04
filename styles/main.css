@@ -6,7 +6,6 @@
 .xp-desktop {
   position: fixed;
   inset: 0;
-  bottom: var(--xp-taskbar-height);
   background: var(--xp-desktop-bg);
   overflow: hidden;
   z-index: 0;
@@ -26,7 +25,6 @@
 .xp-windows-container {
   position: fixed;
   inset: 0;
-  bottom: var(--xp-taskbar-height);
   pointer-events: none;
   z-index: 10;
 }
@@ -35,237 +33,9 @@
   pointer-events: auto;
 }
 
-/* ─── Taskbar ─── */
-.xp-taskbar {
-  position: fixed;
-  bottom: 0;
-  left: 0;
-  right: 0;
-  height: var(--xp-taskbar-height);
-  background: var(--xp-taskbar-gradient);
-  display: flex;
-  align-items: center;
-  z-index: 9999;
-  padding: 0 var(--xp-space-1);
-  gap: var(--xp-space-2);
-  box-shadow: inset 0 1px 0 rgba(255,255,255,0.15);
-}
-
-.xp-start-button {
-  display: flex;
-  align-items: center;
-  gap: var(--xp-space-2);
-  height: 22px;
-  padding: 0 10px 0 6px;
-  background: var(--xp-start-gradient);
-  border-radius: 0 8px 8px 0;
-  color: var(--xp-titlebar-text);
-  font-family: var(--xp-font);
-  font-size: 11px;
-  font-weight: 700;
-  border: none;
-  cursor: pointer;
-  user-select: none;
-  letter-spacing: 0.3px;
-  text-shadow: 1px 1px 0 rgba(0,0,0,0.3);
-  min-width: 56px;
-}
-
-.xp-start-button:hover {
-  filter: brightness(1.15);
-}
-
-.xp-start-button:active {
-  filter: brightness(0.9);
-}
-
-.xp-start-logo {
-  width: 16px;
-  height: 16px;
-  image-rendering: pixelated;
-}
-
-.xp-taskbar-items {
-  display: flex;
-  gap: var(--xp-space-1);
-  flex: 1;
-  min-width: 0;
-  align-items: center;
-}
-
-.xp-taskbar-item {
-  height: 22px;
-  padding: 0 12px;
-  background: var(--xp-taskbar-item);
-  color: var(--xp-titlebar-text);
-  font-family: var(--xp-font);
-  font-size: var(--xp-font-size);
-  display: flex;
-  align-items: center;
-  cursor: pointer;
-  min-width: 80px;
-  max-width: 200px;
-  border: none;
-  text-align: left;
-  box-shadow: inset 0 1px 0 rgba(255,255,255,0.2), inset 0 -1px 0 rgba(0,0,0,0.2);
-  user-select: none;
-}
-
-.xp-taskbar-item:hover {
-  filter: brightness(1.1);
-}
-
-.xp-taskbar-item.active {
-  background: var(--xp-taskbar-item-active);
-  box-shadow: inset 0 2px 0 rgba(255,255,255,0.3), inset 0 -1px 0 rgba(0,0,0,0.3);
-}
-
-.xp-taskbar-item .xp-taskbar-item-icon {
-  width: 16px;
-  height: 16px;
-  margin-right: 6px;
-  image-rendering: pixelated;
-  flex-shrink: 0;
-}
-
-.xp-taskbar-item .xp-taskbar-item-title {
-  overflow: hidden;
-  text-overflow: ellipsis;
-  white-space: nowrap;
-  font-size: var(--xp-font-size);
-}
-
-.xp-taskbar-tray {
-  display: flex;
-  align-items: center;
-  gap: var(--xp-space-2);
-  color: var(--xp-titlebar-text);
-  font-family: var(--xp-font);
-  font-size: var(--xp-font-size);
-  padding: 0 var(--xp-space-3);
-  height: 22px;
-  border-left: 1px solid rgba(255,255,255,0.2);
-  margin-left: auto;
-  flex-shrink: 0;
-}
-
-.xp-taskbar-clock {
-  font-family: var(--xp-font);
-  font-size: var(--xp-font-size);
-  white-space: nowrap;
-}
-
-/* ─── Taskbar Notification Badge ─── */
-.xp-taskbar-notif-badge {
-  position: relative;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  min-width: 18px;
-  height: 16px;
-  padding: 0 4px;
-  background: #E81123;
-  color: #FFFFFF;
-  font-family: var(--xp-font);
-  font-size: 9px;
-  font-weight: 700;
-  border: 1px solid #B00C1A;
-  cursor: pointer;
-  flex-shrink: 0;
-  line-height: 16px;
-}
-
-.xp-taskbar-notif-badge:hover {
-  background: #FF1A2D;
-}
-
-.xp-taskbar-notif-badge.hidden {
+/* ─── Desktop Icons (legacy, unused in social layout) ─── */
+.xp-desktop-icons {
   display: none;
-}
-
-/* ─── Start Menu ─── */
-.xp-start-menu {
-  position: fixed;
-  bottom: var(--xp-taskbar-height);
-  left: 0;
-  width: 340px;
-  max-height: 500px;
-  background: var(--xp-window-bg);
-  box-shadow: var(--xp-shadow-window);
-  z-index: 9998;
-  display: flex;
-  flex-direction: row;
-  user-select: none;
-}
-
-.xp-start-menu-sidebar {
-  width: 48px;
-  background: var(--xp-start-gradient);
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: flex-end;
-  padding: var(--xp-space-3) 0;
-  gap: var(--xp-space-2);
-  flex-shrink: 0;
-}
-
-.xp-start-menu-logo {
-  width: 28px;
-  height: 28px;
-  image-rendering: pixelated;
-}
-
-.xp-start-menu-brand {
-  writing-mode: vertical-rl;
-  transform: rotate(180deg);
-  color: var(--xp-titlebar-text);
-  font-family: var(--xp-font);
-  font-size: var(--xp-font-size-title);
-  font-weight: 700;
-  letter-spacing: 1px;
-  text-shadow: 1px 1px 0 rgba(0,0,0,0.3);
-}
-
-.xp-start-menu-items {
-  flex: 1;
-  display: flex;
-  flex-direction: column;
-  padding: var(--xp-space-2) 0;
-  overflow-y: auto;
-}
-
-.xp-start-menu-item {
-  display: flex;
-  align-items: center;
-  gap: var(--xp-space-3);
-  padding: var(--xp-space-2) var(--xp-space-5);
-  cursor: pointer;
-  font-family: var(--xp-font);
-  font-size: var(--xp-font-size);
-  color: var(--xp-text);
-  border: none;
-  background: none;
-  text-align: left;
-  width: 100%;
-}
-
-.xp-start-menu-item:hover {
-  background: var(--xp-highlight);
-  color: var(--xp-highlight-text);
-}
-
-.xp-start-menu-item img {
-  width: 24px;
-  height: 24px;
-  image-rendering: pixelated;
-  flex-shrink: 0;
-}
-
-.xp-start-menu-divider {
-  height: 1px;
-  background: var(--xp-button-shadow);
-  margin: var(--xp-space-1) var(--xp-space-4);
 }
 
 /* ─── Loading Screen ─── */
@@ -284,6 +54,157 @@
 
 .xp-loading-text {
   color: var(--xp-text);
+}
+
+/* ═══════════════════════════════════════════════════════
+   Social Shell — Social Media Layout
+   ═══════════════════════════════════════════════════════ */
+
+.social-shell {
+  position: fixed;
+  inset: 0;
+  display: flex;
+  flex-direction: column;
+  z-index: 100;
+  background: var(--xp-window-bg);
+}
+
+.social-shell.hidden {
+  display: none;
+}
+
+/* ─── Top Navigation Bar ─── */
+.social-navbar {
+  display: flex;
+  align-items: center;
+  height: 40px;
+  background: var(--xp-taskbar-gradient);
+  padding: 0 var(--xp-space-3);
+  gap: var(--xp-space-2);
+  flex-shrink: 0;
+  box-shadow: inset 0 1px 0 rgba(255,255,255,0.15), 0 1px 4px rgba(0,0,0,0.3);
+  z-index: 10;
+}
+
+.social-nav-brand {
+  display: flex;
+  align-items: center;
+  gap: var(--xp-space-3);
+  padding: 0 var(--xp-space-3);
+  flex-shrink: 0;
+  user-select: none;
+}
+
+.social-nav-logo {
+  width: 20px;
+  height: 20px;
+  image-rendering: pixelated;
+  flex-shrink: 0;
+}
+
+.social-nav-brand-text {
+  font-family: var(--xp-font);
+  font-size: var(--xp-font-size-lg);
+  font-weight: 700;
+  color: var(--xp-titlebar-text);
+  text-shadow: 1px 1px 0 rgba(0,0,0,0.3);
+  letter-spacing: 0.5px;
+  white-space: nowrap;
+}
+
+.social-nav-links {
+  display: flex;
+  align-items: center;
+  gap: var(--xp-space-1);
+  flex: 1;
+  min-width: 0;
+  overflow-x: auto;
+  padding: 0 var(--xp-space-1);
+}
+
+.social-nav-item {
+  display: flex;
+  align-items: center;
+  gap: 5px;
+  height: 28px;
+  padding: 0 12px;
+  background: rgba(255,255,255,0.08);
+  border: 1px solid rgba(255,255,255,0.1);
+  color: var(--xp-titlebar-text);
+  font-family: var(--xp-font);
+  font-size: var(--xp-font-size);
+  cursor: pointer;
+  white-space: nowrap;
+  flex-shrink: 0;
+  transition: background 0.1s;
+  user-select: none;
+}
+
+.social-nav-item:hover {
+  background: rgba(255,255,255,0.18);
+}
+
+.social-nav-item:active {
+  background: rgba(0,0,0,0.15);
+}
+
+.social-nav-item.active {
+  background: rgba(255,255,255,0.25);
+  border-color: rgba(255,255,255,0.3);
+  font-weight: 700;
+  box-shadow: inset 0 2px 0 rgba(255,255,255,0.2);
+}
+
+.social-nav-item-icon {
+  width: 16px;
+  height: 16px;
+  flex-shrink: 0;
+  image-rendering: pixelated;
+}
+
+/* ─── Notification Badge ─── */
+.social-nav-badge {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  min-width: 20px;
+  height: 18px;
+  padding: 0 5px;
+  background: #E81123;
+  color: #FFFFFF;
+  font-family: var(--xp-font);
+  font-size: 10px;
+  font-weight: 700;
+  border: 1px solid #B00C1A;
+  flex-shrink: 0;
+  margin-right: var(--xp-space-2);
+  cursor: pointer;
+}
+
+.social-nav-badge:hover {
+  background: #FF1A2D;
+}
+
+.social-nav-badge.hidden {
+  display: none;
+}
+
+/* ─── Main Content Area ─── */
+.social-content {
+  flex: 1;
+  min-height: 0;
+  display: flex;
+  flex-direction: column;
+  background: var(--xp-window-bg);
+  overflow: hidden;
+}
+
+.social-view-container {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  min-height: 0;
+  overflow: hidden;
 }
 
 /* ─── Responsive ─── */
