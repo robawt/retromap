@@ -306,7 +306,7 @@ class GameScene extends Phaser.Scene {
         if (this.anims.exists(animKey)) {
           animal.play(animKey);
           // Stagger animation offset to prevent synchronized movement
-          animal.anims.setTimeScale(0.8 + Math.random() * 0.4);
+          animal.anims.timeScale = 0.8 + Math.random() * 0.4;
           animal.anims.setProgress(Math.random());
         }
         this._animals.push(animal);
