@@ -34,10 +34,7 @@ class BootScene extends Phaser.Scene {
     this.load.spritesheet('player-sheet', 'assets/game/Player.png', {
       frameWidth: 48, frameHeight: 64
     });
-    // Player Actions (96×576, 48×48 frames, 2×12=24 frames)
-    this.load.spritesheet('player-actions', 'assets/game/Player_Actions.png', {
-      frameWidth: 48, frameHeight: 48
-    });
+
 
     // ─── TILES ───
     // Basic 16×16 tiles
@@ -77,9 +74,6 @@ class BootScene extends Phaser.Scene {
     this.load.spritesheet('animal-sheep', 'assets/game/Sheep.png', { frameWidth: 32, frameHeight: 32 });
 
     // ─── ENEMIES / DECOR ───
-    this.load.spritesheet('skeleton', 'assets/game/Skeleton.png', {   // 192×320, 48×64 frames
-      frameWidth: 48, frameHeight: 64
-    });
     this.load.spritesheet('slime-green', 'assets/game/Slime_Green.png', { // 512×192, 32×96 frames
       frameWidth: 32, frameHeight: 96
     });

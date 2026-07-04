@@ -364,23 +364,22 @@ class GameScene extends Phaser.Scene {
 
   _placePond() {
     const cx = 30, cy = 36;
-    // Bridge over the pond (east-west) using 3 bridge segments
+    // Bridge over the pond — segments placed 48px apart (3 tiles) for seamless tiling
     const bridgeY = 36;
     if (this.textures.exists('bridge-0')) {
-      this.add.image(27 * TILE_SIZE + 24, bridgeY * TILE_SIZE + 32, 'bridge-0').setDepth(3).setOrigin(0.5, 0.5);
-      this.add.image(28 * TILE_SIZE + 24, bridgeY * TILE_SIZE + 32, 'bridge-1').setDepth(3).setOrigin(0.5, 0.5);
-      this.add.image(29 * TILE_SIZE + 24, bridgeY * TILE_SIZE + 32, 'bridge-2').setDepth(3).setOrigin(0.5, 0.5);
+      this.add.image(27 * TILE_SIZE + TILE_SIZE / 2, bridgeY * TILE_SIZE + 32, 'bridge-0').setDepth(3).setOrigin(0.5, 0.5);
+      this.add.image(30 * TILE_SIZE + TILE_SIZE / 2, bridgeY * TILE_SIZE + 32, 'bridge-1').setDepth(3).setOrigin(0.5, 0.5);
+      this.add.image(33 * TILE_SIZE + TILE_SIZE / 2, bridgeY * TILE_SIZE + 32, 'bridge-2').setDepth(3).setOrigin(0.5, 0.5);
+      // Make bridge walkable
+      for (let bx = 27; bx <= 35; bx++) {
+        if (this._collisionMap[bridgeY] !== undefined) this._collisionMap[bridgeY][bx] = false;
+      }
     } else {
       // Fallback: use path tiles as dock
       for (let i = 0; i < 3; i++) {
-        this.add.image((cx - 3 + i) * TILE_SIZE + TILE_SIZE / 2, (cy) * TILE_SIZE + TILE_SIZE / 2, 'tile-path').setDepth(2);
         if (this._collisionMap[cy] !== undefined) this._collisionMap[cy][cx - 3 + i] = false;
       }
     }
-    // Bridge walkable tiles
-    this._collisionMap[bridgeY][27] = false;
-    this._collisionMap[bridgeY][28] = false;
-    this._collisionMap[bridgeY][29] = false;
 
     // Dock/pier on the south side
     for (let i = 0; i < 3; i++) {
