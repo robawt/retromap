@@ -299,10 +299,15 @@
   justify-content: center;
   z-index: 10000;
   pointer-events: none;
+  visibility: hidden;
+  opacity: 0;
+  transition: opacity 0.15s ease;
 }
 
 .xp-dialog-overlay:not(.hidden) {
   pointer-events: auto;
+  visibility: visible;
+  opacity: 1;
 }
 
 .xp-dialog {

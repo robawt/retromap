@@ -1,7 +1,6 @@
 /* ═══════════════════════════════════════════════════════
-   RetroMap — Social Shell (Social Media Layout)
-   Replaces the Windows XP desktop with a modern
-   social-media navigation layout, keeping the XP aesthetic.
+   RetroMap — Social Shell (Instagram-style Layout)
+   Modern social media navigation with XP aesthetic
    ═══════════════════════════════════════════════════════ */
 
 const SocialShell = {
@@ -37,69 +36,88 @@ const SocialShell = {
   _buildLayout() {
     this._container.innerHTML = '';
 
-    // ── Top Navigation Bar ──
-    const navBar = createElement('header', { className: 'social-navbar' });
+    // ── Top Navigation Bar (Instagram-style) ──
+    const navBar = createElement('header', { className: 'ig-navbar' });
 
-    // Brand / Logo
-    const brand = createElement('div', { className: 'social-nav-brand' });
-    const logo = createElement('img', {
-      className: 'social-nav-logo',
+    // Left: Brand / Logo
+    const brand = createElement('div', { className: 'ig-nav-brand' });
+    const logo = createElement('div', { className: 'ig-nav-brand-inner' });
+    const logoImg = createElement('img', {
+      className: 'ig-nav-logo',
       src: 'assets/ui/logos/retromap-logo.svg',
       alt: 'RetroMap',
-      width: 20, height: 20,
+      width: 22, height: 22,
       onerror: 'this.style.display="none"'
     });
-    brand.appendChild(logo);
-    brand.appendChild(createElement('span', {
-      className: 'social-nav-brand-text',
+    logo.appendChild(logoImg);
+    logo.appendChild(createElement('span', {
+      className: 'ig-nav-brand-text',
       textContent: 'RetroMap'
     }));
+    brand.appendChild(logo);
     navBar.appendChild(brand);
 
-    // Navigation links
-    const navLinks = createElement('nav', { className: 'social-nav-links' });
+    // Center: Navigation Icons
+    const navCenter = createElement('div', { className: 'ig-nav-center' });
 
     for (const view of this._viewConfigs) {
       const btn = createElement('button', {
-        className: 'social-nav-item',
+        className: 'ig-nav-btn',
         'data-view': view.id,
         title: view.label
       });
 
+      const btnInner = createElement('div', { className: 'ig-nav-btn-inner' });
+
       if (view.icon) {
         const icon = createElement('img', {
-          className: 'social-nav-item-icon',
+          className: 'ig-nav-icon',
           src: view.icon,
           alt: '',
-          width: 16, height: 16,
+          width: 22, height: 22,
           onerror: 'this.style.display="none"'
         });
-        btn.appendChild(icon);
+        btnInner.appendChild(icon);
+      } else {
+        // Fallback icon for Pixel Editor (no SVG)
+        const fallback = createElement('div', {
+          className: 'ig-nav-icon-fallback',
+          textContent: '🎨'
+        });
+        btnInner.appendChild(fallback);
       }
 
-      btn.appendChild(document.createTextNode(view.label));
+      btnInner.appendChild(createElement('span', {
+        className: 'ig-nav-label',
+        textContent: view.label
+      }));
+
+      btn.appendChild(btnInner);
       btn.addEventListener('click', () => this.switchView(view.id));
-      navLinks.appendChild(btn);
+      navCenter.appendChild(btn);
       this._navLinks[view.id] = btn;
     }
 
-    navBar.appendChild(navLinks);
+    navBar.appendChild(navCenter);
 
-    // Notification badge (unread messages) — click to open Messages
+    // Right: Notification badge + extras
+    const navRight = createElement('div', { className: 'ig-nav-right' });
+
     this._notifBadge = createElement('button', {
-      className: 'social-nav-badge hidden',
+      className: 'ig-nav-badge hidden',
       textContent: '0',
       title: 'Unread messages'
     });
     this._notifBadge.addEventListener('click', () => {
       this.switchView('messages');
     });
-    navBar.appendChild(this._notifBadge);
+    navRight.appendChild(this._notifBadge);
 
+    navBar.appendChild(navRight);
     this._container.appendChild(navBar);
 
     // ── Main Content Area ──
-    this._contentArea = createElement('main', { className: 'social-content' });
+    this._contentArea = createElement('main', { className: 'ig-content' });
     this._container.appendChild(this._contentArea);
 
     // Start polling for notifications
@@ -149,7 +167,7 @@ const SocialShell = {
     } else {
       // Create new container and render
       const container = createElement('div', {
-        className: 'social-view-container'
+        className: 'ig-view-container'
       });
       this._contentArea.appendChild(container);
       this._viewContainers[viewId] = container;

@@ -104,16 +104,16 @@ class GameScene extends Phaser.Scene {
     this.events.on('shutdown', this._onGameShutdown, this);
     this.events.on('destroy', this._onGameShutdown, this);
 
-    // ─── Interaction prompt ───
+    // ─── Interaction prompt (OMORI-style soft yellow) ───
     this._interactPrompt = this.add.text(0, 0, '', {
-      fontFamily: 'Tahoma', fontSize: '10px', color: '#FFFF00',
+      fontFamily: 'Tahoma', fontSize: '10px', color: '#E8D080',
       stroke: '#000000', strokeThickness: 2, align: 'center'
     }).setOrigin(0.5, 1).setDepth(15).setVisible(false);
 
     // ─── Build mode ───
     this._buildOverlay = this.add.graphics().setDepth(2).setVisible(false);
     this._buildModeText = this.add.text(4, 52, '', {
-      fontFamily: 'Tahoma', fontSize: '9px', color: '#00FF00',
+      fontFamily: 'Tahoma', fontSize: '9px', color: '#80C870',
       stroke: '#000000', strokeThickness: 1
     }).setScrollFactor(0).setDepth(20).setVisible(false);
 
@@ -635,24 +635,24 @@ class GameScene extends Phaser.Scene {
      ═══════════════════════════════════════════════════ */
 
   _buildHUD() {
-    // Top-left controls hint
+    // Top-left controls hint (OMORI soft pastel) — actually, let's reposition
     this.add.text(4, 4, 'WASD/Arrows: Move | E: Interact | B: Build | M: Map | ESC: Close', {
-      fontFamily: 'Tahoma', fontSize: '8px', color: '#FFFFFF',
+      fontFamily: 'Tahoma', fontSize: '8px', color: '#F0E8D0',
       stroke: '#000000', strokeThickness: 2
     }).setScrollFactor(0).setDepth(20);
 
     this._hudCoords = this.add.text(4, 16, 'X:0 Y:0', {
-      fontFamily: 'Tahoma', fontSize: '9px', color: '#AAAAAA',
+      fontFamily: 'Tahoma', fontSize: '9px', color: '#D0C8B0',
       stroke: '#000000', strokeThickness: 1
     }).setScrollFactor(0).setDepth(20);
 
     this._hudCoins = this.add.text(4, 28, '', {
-      fontFamily: 'Tahoma', fontSize: '10px', color: '#FFD700',
+      fontFamily: 'Tahoma', fontSize: '10px', color: '#E8D080',
       stroke: '#000000', strokeThickness: 1
     }).setScrollFactor(0).setDepth(20);
 
     this._hudFlowers = this.add.text(4, 40, '', {
-      fontFamily: 'Tahoma', fontSize: '9px', color: '#AAAAAA',
+      fontFamily: 'Tahoma', fontSize: '9px', color: '#C0B8A0',
       stroke: '#000000', strokeThickness: 1
     }).setScrollFactor(0).setDepth(20);
 
