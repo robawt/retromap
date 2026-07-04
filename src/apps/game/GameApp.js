@@ -49,6 +49,7 @@ const GameApp = {
       return;
     }
 
+    const wrapper = this._canvasContainer;
     const config = {
       type: Phaser.AUTO,
       width: this.defaultWidth,
