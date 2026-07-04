@@ -346,7 +346,7 @@ const LoginApp = {
     // Dispatch event so the shell knows
     dispatchEvent('user-login', { user });
 
-    // Show success notification
+    // Close login window
     const winEl = this._container ? this._container.closest('.xp-window') : null;
     const winId = winEl ? winEl.id.replace('win-', '') : null;
     const win = WindowManager.getWindow(winId);
@@ -354,13 +354,8 @@ const LoginApp = {
       win.close();
     }
 
-    // Show welcome notification (via taskbar notification)
-    setTimeout(() => {
-      UIDialog.alert(
-        'Welcome to RetroMap!',
-        `Hello, ${user.displayName}! Start by clicking desktop icons or the Start menu to explore.\n\nYour account has been loaded. Enjoy RetroMap!`
-      );
-    }, 300);
+    // Tutorial is started by main.js via user-login event listener
+    // (replaces the old generic welcome dialog)
   },
 
   /* ─── Show error message ─── */

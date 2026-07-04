@@ -45,11 +45,18 @@ const ProfileApp = {
   _renderProfile(container) {
     const user = this._user;
 
+    // Load customizations from EconomyService
+    this._customizations = EconomyService.getCustomizations(user.username) || {
+      frame: 'none', nameColor: 'default', theme: 'blue'
+    };
+
     // ── Banner Area ──
     const banner = createElement('div', { className: 'profile-banner' });
 
-    // Avatar
-    const avatarContainer = createElement('div', { className: 'profile-avatar-container' });
+    // Avatar with frame
+    const avatarContainer = createElement('div', {
+      className: 'profile-avatar-container profile-frame-' + this._customizations.frame
+    });
     const avatarImg = createElement('img', {
       className: 'profile-avatar',
       src: user.avatar || 'assets/ui/icons/profile.svg',
@@ -59,12 +66,12 @@ const ProfileApp = {
     avatarContainer.appendChild(avatarImg);
     banner.appendChild(avatarContainer);
 
+    // Look up name color
+    const nameColorItem = EconomyService.findShopItem('nameColors', this._customizations.nameColor) || {};
+    const nameColor = nameColorItem.color || '#FFFFFF';
+
     // Name and status
     const nameSection = createElement('div', { className: 'profile-name-section' });
-    nameSection.appendChild(createElement('div', {
-      className: 'profile-displayname',
-      textContent: user.displayName
-    }));
     const statusRow = createElement('div', { className: 'profile-status-row' });
     statusRow.appendChild(createElement('span', {
       className: 'profile-status-indicator online'
@@ -74,6 +81,14 @@ const ProfileApp = {
       textContent: 'Online'
     }));
     nameSection.appendChild(statusRow);
+
+    const nameEl = createElement('div', {
+      className: 'profile-displayname',
+      textContent: user.displayName
+    });
+    nameEl.style.color = nameColor;
+    nameSection.appendChild(nameEl);
+
     nameSection.appendChild(createElement('div', {
       className: 'profile-username',
       textContent: '@' + user.username

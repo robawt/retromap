@@ -36,16 +36,79 @@ const Taskbar = {
       this._startButton.after(this._itemsContainer);
     }
 
-    // Clock
-    if (!this._clockEl) {
-      const tray = createElement('div', { className: 'xp-taskbar-tray' });
-      this._clockEl = createElement('span', { id: 'taskbar-clock', className: 'xp-taskbar-clock' });
-      tray.appendChild(this._clockEl);
+    // Tray (clock + notification badge)
+    let tray = this._container.querySelector('.xp-taskbar-tray');
+    if (!tray) {
+      tray = createElement('div', { className: 'xp-taskbar-tray' });
       this._container.appendChild(tray);
     }
 
+    // Notification badge
+    this._notifBadge = createElement('button', {
+      className: 'xp-taskbar-notif-badge hidden',
+      'aria-label': 'Notifications',
+      title: 'No new notifications'
+    });
+    this._notifBadge.addEventListener('click', () => {
+      dispatchEvent('launch-app', { appId: 'chat', title: 'Chat' });
+    });
+    tray.prepend(this._notifBadge);
+
+    // Clock
+    if (!this._clockEl) {
+      this._clockEl = createElement('span', { id: 'taskbar-clock', className: 'xp-taskbar-clock' });
+    }
+    tray.appendChild(this._clockEl);
+
     this._setupEvents();
     startClock(this._clockEl);
+
+    // Start polling for unread notifications
+    this._startNotifPolling();
+  },
+
+  /* ─── Start polling for unread notifications ─── */
+  _startNotifPolling() {
+    this._lastNotifCount = 0;
+    this._notifPollTimer = setInterval(() => {
+      this._updateNotifBadge();
+    }, 5000);
+    this._updateNotifBadge();
+
+    // Also update on new-message events
+    listenEvent('new-message', () => {
+      setTimeout(() => this._updateNotifBadge(), 500);
+    });
+  },
+
+  /* ─── Update notification badge ─── */
+  _updateNotifBadge() {
+    const session = StorageService.getActiveSession();
+    if (!session) {
+      this._notifBadge.classList.add('hidden');
+      return;
+    }
+
+    const totalUnread = ChatService.getTotalUnreadCount(session.username);
+
+    if (totalUnread > 0) {
+      this._notifBadge.textContent = totalUnread > 99 ? '99+' : String(totalUnread);
+      this._notifBadge.classList.remove('hidden');
+      this._notifBadge.title = totalUnread + ' unread message' + (totalUnread > 1 ? 's' : '');
+    } else {
+      this._notifBadge.classList.add('hidden');
+      this._notifBadge.title = 'No new notifications';
+    }
+
+    this._lastNotifCount = totalUnread;
+  },
+
+  /* ─── Clean up polling ─── */
+  destroy() {
+    if (this._notifPollTimer) {
+      clearInterval(this._notifPollTimer);
+      this._notifPollTimer = null;
+    }
   },
 
   /* ─── Setup events ─── */

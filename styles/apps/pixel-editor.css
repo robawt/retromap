@@ -1,0 +1,197 @@
+/* ═══════════════════════════════════════════════════════
+   RetroMap — Pixel Editor Styles
+   ═══════════════════════════════════════════════════════ */
+
+.pixel-editor-container {
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+  font-family: var(--xp-font);
+  font-size: var(--xp-font-size);
+  color: var(--xp-text);
+  user-select: none;
+  overflow: hidden;
+}
+
+/* ─── Header ─── */
+.pixel-editor-header {
+  padding: var(--xp-space-3);
+  border-bottom: 1px solid var(--xp-button-shadow);
+  flex-shrink: 0;
+}
+
+.pixel-editor-title {
+  font-size: 14px;
+  font-weight: 700;
+  color: var(--xp-titlebar-top);
+}
+
+/* ─── Canvas List ─── */
+.pixel-editor-list {
+  flex: 1;
+  overflow-y: auto;
+  padding: var(--xp-space-2);
+}
+
+.pixel-editor-empty {
+  text-align: center;
+  padding: 40px var(--xp-space-5);
+  color: var(--xp-text-disabled);
+  font-style: italic;
+}
+
+.pixel-editor-card {
+  display: flex;
+  align-items: center;
+  gap: var(--xp-space-3);
+  padding: var(--xp-space-3);
+  background: var(--xp-button-face);
+  box-shadow: var(--xp-shadow-raised);
+  margin-bottom: var(--xp-space-2);
+  cursor: default;
+}
+
+.pixel-editor-card.has-art {
+  border-left: 3px solid #22C55E;
+}
+
+.pixel-editor-card-preview {
+  width: 48px;
+  height: 48px;
+  background: var(--xp-sunken-bg);
+  box-shadow: var(--xp-shadow-sunken);
+  flex-shrink: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  overflow: hidden;
+}
+
+.pixel-editor-card-blank {
+  font-size: 9px;
+  color: var(--xp-text-disabled);
+  font-style: italic;
+}
+
+.pixel-editor-card-info {
+  flex: 1;
+  min-width: 0;
+}
+
+.pixel-editor-card-name {
+  font-weight: 700;
+  font-size: var(--xp-font-size);
+  margin-bottom: 2px;
+}
+
+.pixel-editor-card-size {
+  font-size: 10px;
+  color: var(--xp-text-disabled);
+}
+
+.pixel-editor-btn {
+  min-width: auto !important;
+  padding: 2px 10px !important;
+  min-height: auto !important;
+  font-size: 10px !important;
+}
+
+/* ─── Editor ─── */
+.pixel-editor-editor-header {
+  padding: var(--xp-space-2);
+  border-bottom: 1px solid var(--xp-button-shadow);
+  flex-shrink: 0;
+}
+
+.pixel-editor-name-row {
+  display: flex;
+  align-items: center;
+  gap: var(--xp-space-2);
+}
+
+.pixel-editor-name-input {
+  flex: 1;
+  min-width: 0;
+}
+
+.pixel-editor-editor-area {
+  flex: 1;
+  display: flex;
+  gap: var(--xp-space-3);
+  padding: var(--xp-space-3);
+  min-height: 0;
+  align-items: flex-start;
+  justify-content: center;
+  overflow: auto;
+}
+
+/* ─── Grid ─── */
+.pixel-editor-grid {
+  display: grid;
+  gap: 0;
+  border: 1px solid var(--xp-button-dark-shadow);
+  background: #E0E0E0;
+  flex-shrink: 0;
+  image-rendering: pixelated;
+}
+
+.pixel-editor-cell {
+  width: 20px;
+  height: 20px;
+  background: transparent;
+  cursor: crosshair;
+  border: 1px solid rgba(0,0,0,0.08);
+  box-sizing: border-box;
+}
+
+.pixel-editor-cell:hover {
+  filter: brightness(0.9);
+  outline: 1px solid rgba(0,0,0,0.3);
+  outline-offset: -1px;
+}
+
+/* ─── Palette ─── */
+.pixel-editor-palette {
+  display: flex;
+  flex-direction: column;
+  gap: var(--xp-space-2);
+  flex-shrink: 0;
+}
+
+.pixel-editor-colors {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 2px;
+  background: var(--xp-button-face);
+  padding: var(--xp-space-2);
+  box-shadow: var(--xp-shadow-raised);
+}
+
+.pixel-editor-swatch {
+  width: 24px;
+  height: 24px;
+  cursor: pointer;
+  border: 1px solid var(--xp-button-shadow);
+  box-sizing: border-box;
+}
+
+.pixel-editor-swatch:hover {
+  transform: scale(1.15);
+  z-index: 1;
+  border-color: var(--xp-text);
+}
+
+.pixel-editor-swatch.active {
+  outline: 2px solid var(--xp-text);
+  outline-offset: -2px;
+  border-color: var(--xp-highlight);
+}
+
+/* ─── Footer ─── */
+.pixel-editor-footer {
+  padding: var(--xp-space-1) var(--xp-space-3);
+  border-top: 1px solid var(--xp-button-shadow);
+  font-size: 9px;
+  color: var(--xp-text-disabled);
+  flex-shrink: 0;
+}

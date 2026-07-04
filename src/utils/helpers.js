@@ -127,3 +127,10 @@ function dispatchEvent(eventName, detail = {}) {
 function listenEvent(eventName, handler) {
   document.addEventListener(eventName, handler);
 }
+
+/**
+ * Remove a custom event listener
+ */
+function removeEvent(eventName, handler) {
+  document.removeEventListener(eventName, handler);
+}

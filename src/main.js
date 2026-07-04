@@ -16,10 +16,29 @@ const RetroMap = {
     // 2. Initialize Dialog System
     UIDialog.init();
 
-    // 3. Initialize Taskbar
+    // 3. Initialize Economy Service (wire feed event listeners)
+    EconomyService.wireFeedEvents();
+
+    // 4. Initialize Sound Manager (register default XP sounds)
+    SoundManager.registerDefaults();
+
+    // 5. Initialize Notification Service
+    Notifications.init();
+    Notifications.wireEvents();
+
+    // Wire tutorial to user-login event
+    listenEvent('user-login', (e) => {
+      if (e.detail.user) {
+        setTimeout(() => {
+          TutorialGuide.start(e.detail.user.username);
+        }, 600);
+      }
+    });
+
+    // 4. Initialize Taskbar
     Taskbar.init();
 
-    // 4. Initialize Start Menu
+    // 5. Initialize Start Menu
     StartMenu.init();
 
     // 5. Initialize Desktop with default icons
@@ -29,6 +48,11 @@ const RetroMap = {
     // 6. Register apps
     this.registerApp('login', LoginApp);
     this.registerApp('profile', ProfileApp);
+    this.registerApp('feed', FeedApp);
+    this.registerApp('friends', FriendsApp);
+    this.registerApp('chat', ChatApp);
+    this.registerApp('game', GameApp);
+    this.registerApp('pixel-editor', PixelEditorApp);
 
     // 7. Register listen for app launches
     listenEvent('launch-app', (e) => {

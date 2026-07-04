@@ -457,29 +457,61 @@
 
 /* ─── Notification / Toast ─── */
 .xp-notification {
-  position: fixed;
-  bottom: calc(var(--xp-taskbar-height) + var(--xp-space-3));
-  right: var(--xp-space-5);
+  position: relative;
   width: 280px;
   background: var(--xp-tooltip-bg);
   box-shadow: var(--xp-shadow-window);
-  z-index: 9997;
   padding: var(--xp-space-3);
   display: flex;
   align-items: flex-start;
   gap: var(--xp-space-3);
-  animation: xp-notification-in 0.3s ease-out;
+  margin-bottom: var(--xp-space-2);
+  opacity: 0;
+  transform: translateX(20px);
+  transition: opacity 0.2s ease-out, transform 0.2s ease-out;
+  cursor: pointer;
 }
 
-@keyframes xp-notification-in {
-  from {
-    opacity: 0;
-    transform: translateY(20px);
-  }
-  to {
-    opacity: 1;
-    transform: translateY(0);
-  }
+.xp-notification.notif-visible {
+  opacity: 1;
+  transform: translateX(0);
+}
+
+.xp-notification.notif-hiding {
+  opacity: 0;
+  transform: translateX(20px);
+}
+
+.notif-container {
+  position: fixed;
+  bottom: calc(var(--xp-taskbar-height) + var(--xp-space-3));
+  right: var(--xp-space-5);
+  z-index: 9997;
+  display: flex;
+  flex-direction: column-reverse;
+  align-items: flex-end;
+  pointer-events: none;
+}
+
+.notif-container .xp-notification {
+  pointer-events: auto;
+}
+
+.notif-close-btn {
+  background: none;
+  border: none;
+  color: var(--xp-text-disabled);
+  cursor: pointer;
+  font-family: var(--xp-font);
+  font-size: 10px;
+  font-weight: 700;
+  padding: 0 2px;
+  line-height: 1;
+  flex-shrink: 0;
+}
+
+.notif-close-btn:hover {
+  color: #E81123;
 }
 
 .xp-notification-icon {

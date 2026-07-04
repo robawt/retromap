@@ -155,6 +155,34 @@
   white-space: nowrap;
 }
 
+/* ─── Taskbar Notification Badge ─── */
+.xp-taskbar-notif-badge {
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  min-width: 18px;
+  height: 16px;
+  padding: 0 4px;
+  background: #E81123;
+  color: #FFFFFF;
+  font-family: var(--xp-font);
+  font-size: 9px;
+  font-weight: 700;
+  border: 1px solid #B00C1A;
+  cursor: pointer;
+  flex-shrink: 0;
+  line-height: 16px;
+}
+
+.xp-taskbar-notif-badge:hover {
+  background: #FF1A2D;
+}
+
+.xp-taskbar-notif-badge.hidden {
+  display: none;
+}
+
 /* ─── Start Menu ─── */
 .xp-start-menu {
   position: fixed;
