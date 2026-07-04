@@ -47,8 +47,6 @@ class BootScene extends Phaser.Scene {
 
     // Larger tiles (need slicing)
     this.load.image('farmland', 'assets/game/FarmLand_Tile.png');
-    this.load.image('water-tile', 'assets/game/Water_Tile.png');
-    this.load.image('path-tile', 'assets/game/Path_Tile.png');
     this.load.image('beach-tile', 'assets/game/Beach_Tile.png');
     this.load.image('cliff-tile', 'assets/game/Cliff_Tile.png');
 
@@ -89,8 +87,6 @@ class BootScene extends Phaser.Scene {
 
     // ─── Slice larger tiles into sub-textures ───
     this._sliceTileSheet('farmland', 48, 48, 'farmland-');
-    this._sliceTileSheet('water-tile', 48, 48, 'water-tile-');
-    this._sliceTileSheet('path-tile', 48, 48, 'path-tile-');
     this._sliceTileSheet('cliff-tile', 48, 48, 'cliff-tile-');
     this._sliceTileSheet('beach-tile', 48, 48, 'beach-tile-');
     this._sliceTileSheet('fences', 32, 32, 'fence-');

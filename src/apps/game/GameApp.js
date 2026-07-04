@@ -49,13 +49,10 @@ const GameApp = {
       return;
     }
 
-    const wrapper = this._canvasContainer;
-    const rect = wrapper.getBoundingClientRect();
-
     const config = {
       type: Phaser.AUTO,
-      width: Math.max(400, Math.floor(rect.width)),
-      height: Math.max(300, Math.floor(rect.height)),
+      width: this.defaultWidth,
+      height: this.defaultHeight,
       parent: wrapper.id,
       backgroundColor: '#4A7C3F',
       pixelArt: true,
